@@ -22,4 +22,6 @@ I have only just started with the work on this module. Therefore, it is currentl
 
 - Checking rate limit information
 
+The module will be targeting PowerShell Core 6 to run on Windows as well as Linux. Backporting to Windows PowerShell is not planned (yet). 
+
 This repo is still missing the Appveyor pipeline for building and publishing.
