@@ -1,0 +1,11 @@
+﻿TOPIC
+	about_HetznerCloud
+	
+SHORT DESCRIPTION
+	Explains how to use the HetznerCloud powershell module
+	
+LONG DESCRIPTION
+	<Insert Content here>
+
+KEYWORDS
+	HetznerCloud
