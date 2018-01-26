@@ -61,7 +61,26 @@
 	NestedModules = @()
 	
 	# Functions to export from this module
-	FunctionsToExport = @()
+	FunctionsToExport	    = @(
+		'Add-HetznerCloudSShKey',
+		'Get-HetznerCloud',
+		'Get-HetznerCloudDatacenter',
+		'Get-HetznerCloudFloatingIp',
+		'Get-HetznerCloudFloatingIpAction',
+		'Get-HetznerCloudImage',
+		'Get-HetznerCloudIso',
+		'Get-HetznerCloudLocation',
+		'Get-HetznerCloudPricing',
+		'Get-HetznerCloudServer',
+		'Get-HetznerCloudServerAction',
+		'Get-HetznerCloudServerType',
+		'Get-HetznerCloudSshKey',
+		'New-HetznerCloudFloatingIp',
+		'New-HetznerCloudServer',
+		'Remove-HetznerCloudSshKey',
+		'Set-HetznerCloud',
+		'Set-HetznerCloudSshKey'
+	)
 	
 	# Cmdlets to export from this module
 	CmdletsToExport = @()
