@@ -1,17 +1,4 @@
-﻿function Set-HetznerCloud {
-<#
-	.SYNOPSIS
-		A brief description of the Set-HetznerCloud function.
-	
-	.DESCRIPTION
-		A detailed description of the Set-HetznerCloud function.
-	
-	.PARAMETER Token
-		A description of the Token parameter.
-	
-	.EXAMPLE
-		PS C:\> Set-HetznerCloud -Token 'value1'
-#>
+function Set-HetznerCloud {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)]
