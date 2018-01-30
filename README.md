@@ -6,7 +6,11 @@ Cmdlets for [Hetzner Cloud](https://www.hetzner.com/cloud)
 
 I have only just started with the work on this module. Therefore, it is currently lacking...
 
-- Creation of objects (except for SSH keys)
+- Creation of objects
+
+- Dynamic parameters
+
+- SupportsConfirmImpact
 
 - Modification of objects
 
