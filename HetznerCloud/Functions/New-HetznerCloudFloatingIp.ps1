@@ -45,10 +45,8 @@ function New-HetznerCloudFloatingIp {
             $Payload.Add('description', $Description)
         }
 
-        $Payload | ConvertTo-Json
-
-        #if ($Force -or $PSCmdlet.ShouldProcess("Add new floating IP?")) {
-        #    Invoke-HetznerCloudApi -Api 'floating_ips' -Method 'Post' -Payload $Payload
-        #}
+        if ($Force -or $PSCmdlet.ShouldProcess("Add new floating IP?")) {
+            Invoke-HetznerCloudApi -Api 'floating_ips' -Method 'Post' -Payload $Payload
+        }
     }
 }
