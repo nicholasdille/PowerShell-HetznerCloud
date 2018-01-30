@@ -1,0 +1,12 @@
+*TempPoint*
+*.pssproj
+
+# ignore the settings folder and files for VSCode
+.vscode/*
+*.psproj
+
+# ignore PowerShell Studio MetaData
+HetznerCloud/HetznerCloud.psproj
+HetznerCloud/HetznerCloud.psproj.bak
+HetznerCloud/HetznerCloud.psprojs
+HetznerCloud/HetznerCloud.psproj
