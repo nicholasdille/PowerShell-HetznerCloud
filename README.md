@@ -10,8 +10,6 @@ I have only just started with the work on this module. Therefore, it is currentl
 
 - Dynamic parameters
 
-- SupportsConfirmImpact
-
 - Modification of objects
 
 - Error handling
