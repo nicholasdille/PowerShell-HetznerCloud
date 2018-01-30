@@ -1,1 +1,1 @@
-﻿function Get-HetznerCloudFloatingIpAction {}
+function Get-HetznerCloudFloatingIpAction {}

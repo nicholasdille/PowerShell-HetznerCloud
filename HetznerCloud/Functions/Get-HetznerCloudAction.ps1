@@ -1,4 +1,4 @@
-function Get-HetznerCloudServerAction {
+function Get-HetznerCloudAction {
     [CmdletBinding(DefaultParameterSetName='None')]
     param(
         [Parameter(ParameterSetName='ById')]
@@ -7,5 +7,5 @@ function Get-HetznerCloudServerAction {
         $Id
     )
 
-    Invoke-HetznerCloudApi -Api 'servers' -Id $Id -SubApi 'actions'
+    Invoke-HetznerCloudApi -Api 'actions' @PSBoundParameters
 }

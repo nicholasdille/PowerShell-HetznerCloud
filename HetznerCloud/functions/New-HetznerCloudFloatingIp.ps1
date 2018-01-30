@@ -1,1 +1,1 @@
-﻿function New-HetznerCloudFloatingIp {}
+function New-HetznerCloudFloatingIp {}

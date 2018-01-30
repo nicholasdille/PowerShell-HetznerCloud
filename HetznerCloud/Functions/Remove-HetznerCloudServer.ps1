@@ -1,4 +1,4 @@
-function Remove-HetznerCloudSshKey {
+function Remove-HetznerCloudServer {
     [CmdletBinding()]
     param(
         [Parameter(Mandatory)]
@@ -7,5 +7,5 @@ function Remove-HetznerCloudSshKey {
         $Id
     )
 
-    Invoke-HetznerCloudApi -Api 'ssh_keys' -Method 'Delete' @PSBoundParameters
+    Invoke-HetznerCloudApi -Api 'servers' -Id $Id -Method 'Delete'
 }

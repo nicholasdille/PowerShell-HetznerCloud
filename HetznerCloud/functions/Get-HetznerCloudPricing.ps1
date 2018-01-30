@@ -1,14 +1,4 @@
-﻿function Get-HetznerCloudPricing {
-<#
-	.SYNOPSIS
-		A brief description of the Get-HetznerCloudPricing function.
-	
-	.DESCRIPTION
-		A detailed description of the Get-HetznerCloudPricing function.
-	
-	.EXAMPLE
-		PS C:\> Get-HetznerCloudPricing
-#>
+function Get-HetznerCloudPricing {
     [CmdletBinding()]
     param()
 
