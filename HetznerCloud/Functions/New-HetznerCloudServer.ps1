@@ -7,12 +7,12 @@ function New-HetznerCloudServer {
         $Name
         ,
         [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
+        [ValidateSet('cx11', 'cx11-ceph', 'cx21', 'cx21-ceph', 'cx31', 'cx31-ceph', 'cx41', 'cx41-ceph', 'cx51', 'cx51-ceph')]
         [string]
         $Type
         ,
         [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
+        [ValidateSet('ubuntu-16.04', 'debian-9', 'centos-7', 'fedora-27')]
         [string]
         $Image
         ,
@@ -21,16 +21,36 @@ function New-HetznerCloudServer {
         [int[]]
         $SshKey
         ,
+        [Parameter(ParameterSetName='ByDatacenter')]
+        [ValidateSet('fsn1-dc8', 'nbg1-dc3')]
+        [string]
+        $Datacenter
+        ,
+        [Parameter(ParameterSetName='ByLocation')]
+        [ValidateSet('fsn1', 'nbg1')]
+        [string]
+        $Location
+        ,
         [Parameter()]
         [switch]
         $NoStartAfterCreate
     )
 
-    Invoke-HetznerCloudApi -Api 'servers' -Method 'Post' -Payload @{
+    $Payload = @{
         name = $Name
         server_type = $Type
         image = $Image
         ssh_keys = $SshKey
-        #start_after_create = -not $StartAfterCreate
     }
+    if ($PSBoundParameters.ContainsKey('NoStartAfterCreate')) {
+        $Payload.Add('start_after_create', $false)
+    }
+    if ($PSBoundParameters.ContainsKey('Datacenter')) {
+        $Payload.Add('datacenter', $Datacenter)
+    }
+    if ($PSBoundParameters.ContainsKey('Location')) {
+        $Payload.Add('location', $Location)
+    }
+
+    Invoke-HetznerCloudApi -Api 'servers' -Method 'Post' -Payload $Payload
 }
