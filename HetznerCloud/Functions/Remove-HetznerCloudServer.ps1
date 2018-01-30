@@ -1,11 +1,16 @@
 function Remove-HetznerCloudServer {
     [CmdletBinding()]
     param(
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
-        [int]
+        [int[]]
         $Id
     )
 
-    Invoke-HetznerCloudApi -Api 'servers' -Id $Id -Method 'Delete'
+    process {
+        $Id | ForEach-Object {
+            Write-Verbose "Removing server with ID <$_>"
+            Invoke-HetznerCloudApi -Api 'servers' -Id $_ -Method 'Delete'
+        }
+    }
 }

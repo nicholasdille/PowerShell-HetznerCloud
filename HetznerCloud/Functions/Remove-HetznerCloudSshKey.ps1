@@ -1,11 +1,16 @@
 function Remove-HetznerCloudSshKey {
     [CmdletBinding()]
     param(
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
-        [int]
+        [int[]]
         $Id
     )
 
-    Invoke-HetznerCloudApi -Api 'ssh_keys' -Method 'Delete' @PSBoundParameters
+    process {
+        $Id | ForEach-Object {
+            Write-Verbose "Removing SSH public key with ID <$_>"
+            Invoke-HetznerCloudApi -Api 'ssh_keys' -Method 'Delete' -Id $_
+        }
+    }
 }
