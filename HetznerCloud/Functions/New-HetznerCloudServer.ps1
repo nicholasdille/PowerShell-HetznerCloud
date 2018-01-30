@@ -1,5 +1,5 @@
 function New-HetznerCloudServer {
-    [CmdletBinding()]
+    [CmdletBinding(SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
@@ -35,22 +35,35 @@ function New-HetznerCloudServer {
         [switch]
         $NoStartAfterCreate
     )
-
-    $Payload = @{
-        name = $Name
-        server_type = $Type
-        image = $Image
-        ssh_keys = $SshKey
-    }
-    if ($PSBoundParameters.ContainsKey('NoStartAfterCreate')) {
-        $Payload.Add('start_after_create', $false)
-    }
-    if ($PSBoundParameters.ContainsKey('Datacenter')) {
-        $Payload.Add('datacenter', $Datacenter)
-    }
-    if ($PSBoundParameters.ContainsKey('Location')) {
-        $Payload.Add('location', $Location)
+    
+    begin {
+        if (-not $PSBoundParameters.ContainsKey('Confirm')) {
+            $ConfirmPreference = $PSCmdlet.SessionState.PSVariable.GetValue('ConfirmPreference')
+        }
+        if (-not $PSBoundParameters.ContainsKey('WhatIf')) {
+            $WhatIfPreference = $PSCmdlet.SessionState.PSVariable.GetValue('WhatIfPreference')
+        }
     }
 
-    Invoke-HetznerCloudApi -Api 'servers' -Method 'Post' -Payload $Payload
+    process {
+        $Payload = @{
+            name = $Name
+            server_type = $Type
+            image = $Image
+            ssh_keys = $SshKey
+        }
+        if ($PSBoundParameters.ContainsKey('NoStartAfterCreate')) {
+            $Payload.Add('start_after_create', $false)
+        }
+        if ($PSBoundParameters.ContainsKey('Datacenter')) {
+            $Payload.Add('datacenter', $Datacenter)
+        }
+        if ($PSBoundParameters.ContainsKey('Location')) {
+            $Payload.Add('location', $Location)
+        }
+
+        if ($Force -or $PSCmdlet.ShouldProcess("Add new server called '$Name'?")) {
+            Invoke-HetznerCloudApi -Api 'servers' -Method 'Post' -Payload $Payload
+        }
+    }
 }
