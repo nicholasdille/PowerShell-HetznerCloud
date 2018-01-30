@@ -6,12 +6,6 @@ Cmdlets for [Hetzner Cloud](https://www.hetzner.com/cloud)
 
 I have only just started with the work on this module. Therefore, it is currently lacking...
 
-- Separation of functions into files
-
-- Standardized `Invoke-HetznerCloudApi` cmdlet
-
-- Pagination
-
 - Creation of objects (except for SSH keys)
 
 - Modification of objects
