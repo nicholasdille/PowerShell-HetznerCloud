@@ -41,6 +41,12 @@
     CmdletsToExport = @()
     VariablesToExport = '*'
     AliasesToExport = @()
+    FormatsToProcess = @(
+        'HetznerCloudLocation.Format.ps1xml'
+        'HetznerCloudDatacenter.Format.ps1xml'
+        'HetznerCloudIso.Format.ps1xml'
+        'HetznerCloudImage.Format.ps1xml'
+    )
     PrivateData = @{
         PSData = @{
             # Tags = @()
