@@ -12,6 +12,21 @@ function Invoke-HetznerCloudApi {
         $Id
         ,
         [Parameter()]
+        [ValidateNotNull()]
+        [string]
+        $Action
+        ,
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [int]
+        $ActionId
+        ,
+        [Parameter()]
+        [ValidateNotNull()]
+        [string]
+        $CustomAction
+        ,
+        [Parameter()]
         [Microsoft.PowerShell.Commands.WebRequestMethod]
         [string]
         $Method = 'Get'
@@ -42,6 +57,18 @@ function Invoke-HetznerCloudApi {
     $BaseUri = "$($ApiData.Server)/$Api"
     if ($PSBoundParameters.ContainsKey('Id')) {
         $BaseUri += "/$Id"
+        if ($PSBoundParameters.ContainsKey('Action')) {
+            $BaseUri += "/actions"
+            if ($Action.Length -gt 0) {
+                $BaseUri += "/$Action"
+                if ($PSBoundParameters.ContainsKey('ActionId')) {
+                    $BaseUri += "/$ActionId"
+                }
+            }
+
+        } elseif ($PSBoundParameters.ContainsKey('CustomAction')) {
+            $BaseUri += "/$CustomAction"
+        }
     
     } else {
         $BaseUri += "?per_page=$PageSize"
