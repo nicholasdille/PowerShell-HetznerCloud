@@ -1,6 +1,6 @@
 # Introduction
 
-Cmdlets for [Hetzner Cloud](https://www.hetzner.com/cloud)
+Cmdlets for [Hetzner Cloud](https://www.hetzner.com/cloud) **build for PowerShell Core 6**
 
 [![Build status](https://ci.appveyor.com/api/projects/status/7vbg47o01ju1h8gq?svg=true)](https://ci.appveyor.com/project/nicholasdille/powershell-hetznercloud) [![Download](https://img.shields.io/badge/powershellgallery-HetznerCloud-blue.svg)](https://www.powershellgallery.com/packages/HetznerCloud/)
 
@@ -49,20 +49,4 @@ Get-HetznerCloudServer
 
 ## Status
 
-I have only just started with the work on this module. Therefore, it is currently lacking...
-
-- Creation of objects
-
-- Dynamic parameters
-
-- Modification of objects
-
-- Error handling
-
-- Unit tests
-
-- Checking rate limit information
-
-The module will be targeting PowerShell Core 6 to run on Windows as well as Linux. Backporting to Windows PowerShell is not planned (yet). 
-
-This repo is still missing the Appveyor pipeline for building and publishing.
+Please refer to the [GitHub issues](https://github.com/nicholasdille/PowerShell-HetznerCloud/issues).
