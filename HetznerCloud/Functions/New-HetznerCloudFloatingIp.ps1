@@ -6,20 +6,21 @@ function New-HetznerCloudFloatingIp {
         [string]
         $Type
         ,
-        [Parameter(Mandatory)]
+        [Parameter()]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        $Description
+        ,
+        [Parameter(ParameterSetName='ByServer', Mandatory)]
         [ValidateNotNullOrEmpty()]
         [string]
         $Server
         ,
-        [Parameter(ParameterSetName='ByLocation')]
+        [Parameter(ParameterSetName='ByServer')]
+        [Parameter(ParameterSetName='ByLocation', Mandatory)]
         [ValidateSet('fsn1', 'nbg1')]
         [string]
         $Location
-        ,
-        [Parameter(ParameterSetName='ByLocation')]
-        [ValidateNotNullOrEmpty()]
-        [string]
-        $Description
     )
     
     begin {
