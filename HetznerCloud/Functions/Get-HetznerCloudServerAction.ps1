@@ -1,11 +1,15 @@
 function Get-HetznerCloudServerAction {
-    [CmdletBinding(DefaultParameterSetName='None')]
+    [CmdletBinding()]
     param(
-        [Parameter(ParameterSetName='ById')]
+        [Parameter(Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
-        [string]
+        [int[]]
         $Id
     )
 
-    Invoke-HetznerCloudApi -Api 'servers' -Id $Id -SubApi 'actions'
+    process {
+        $Id | ForEach-Object {
+            Invoke-HetznerCloudApi -Api 'servers' -Id $_ -Action '' | Select-Object -ExpandProperty actions
+        }
+    }
 }
