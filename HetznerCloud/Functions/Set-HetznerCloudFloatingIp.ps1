@@ -1,4 +1,4 @@
-function Set-HetznerCloudSshKey {
+function Set-HetznerCloudFloatingIp {
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact='Low')]
     param(
         [Parameter(Mandatory)]
@@ -6,10 +6,20 @@ function Set-HetznerCloudSshKey {
         [int]
         $Id
         ,
-        [Parameter(Mandatory)]
+        [Parameter(ParameterSetName='SetDescription', Mandatory)]
         [ValidateNotNullOrEmpty()]
         [string]
         $Description
+        ,
+        [Parameter(ParameterSetName='SetDnsPtr', Mandatory)]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        $IPAddress
+        ,
+        [Parameter(ParameterSetName='SetDnsPtr')]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        $Hostname
     )
     
     begin {
@@ -22,9 +32,24 @@ function Set-HetznerCloudSshKey {
     }
 
     process {
-        if ($Force -or $PSCmdlet.ShouldProcess("Change description of floating IP with ID <$Id> to <$Description>?")) {
-            Invoke-HetznerCloudApi -Api 'ssh_keys' -Method 'Put' -Id $Id -Payload @{
-                description = $Description
+        if ($PSCmdlet.ParameterSetName -ieq 'SetDescription') {
+            if ($Force -or $PSCmdlet.ShouldProcess("Change description of floating IP with ID <$Id> to <$Description>?")) {
+                Invoke-HetznerCloudApi -Api 'ssh_keys' -Method 'Put' -Id $Id -Payload @{
+                    description = $Description
+                }
+            }
+
+        } elseif ($PSCmdlet.ParameterSetName -ieq 'SetDnsPtr') {
+            if ($Force -or $PSCmdlet.ShouldProcess("Change DNS PTR of floating IP <$IPAddress> to <$Hostname>?")) {
+                $Payload = @{
+                    ip = $IPAddress
+                    dns_ptr = $null
+                }
+                if ($PSBoundParameters.ContainsKey('Hostname')) {
+                    $Payload['dns_ptr'] = $Hostname
+                }
+                $Payload | ConvertTo-Json
+                Invoke-HetznerCloudApi -Api 'floating_ips' -Method 'Post' -Id $Id -Action 'change_dns_ptr' -Payload $Payload
             }
         }
     }
