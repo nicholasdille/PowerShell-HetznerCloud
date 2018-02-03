@@ -1,4 +1,4 @@
-@{
+﻿@{
     RootModule = 'HetznerCloud.psm1'
     ModuleVersion = '0.8'
     GUID = 'cbab1272-69f6-4fa8-94d0-ae96e2303ee5'
@@ -9,7 +9,7 @@
     # PowerShellVersion = ''
     # RequiredModules = @()
     FunctionsToExport = @(
-		'Add-HetznerCloudSShKey'
+        'Add-HetznerCloudSShKey'
         'Disable-HetznerCloudServerBackup'
         'Disable-HetznerCloudServerRescue'
         'Dismount-HetznerCloudIso'
@@ -49,10 +49,10 @@
         'Stop-HetznerCloudServer'
         'Unregister-HetznerCloudFloatingIp'
         'Wait-HetznerCloudServer'
-	)
-            LicenseUri = 'https://github.com/nicholasdille/PowerShell-HetznerCloud/blob/master/LICENSE'
-            ProjectUri = 'https://github.com/nicholasdille/PowerShell-HetznerCloud'
-            ReleaseNotes = 'https://github.com/nicholasdille/PowerShell-HetznerCloud/blob/master/RELEASENOTES.md'
+    )
+    CmdletsToExport = @()
+    VariablesToExport = '*'
+    AliasesToExport = @()
     FormatsToProcess = @(
         'HetznerCloudLocation.Format.ps1xml'
         'HetznerCloudDatacenter.Format.ps1xml'
