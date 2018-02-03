@@ -58,6 +58,9 @@
         'HetznerCloudDatacenter.Format.ps1xml'
         'HetznerCloudIso.Format.ps1xml'
         'HetznerCloudImage.Format.ps1xml'
+        'HetznerCloudSshKey.Format.ps1xml'
+        'HetznerCloudFloatingIp.Format.ps1xml'
+        'HetznerCloudServer.Format.ps1xml'
     )
     PrivateData = @{
         PSData = @{
