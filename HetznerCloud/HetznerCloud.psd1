@@ -65,9 +65,9 @@
     PrivateData = @{
         PSData = @{
             # Tags = @()
-            # LicenseUri = ''
-            # ProjectUri = ''
-            # ReleaseNotes = ''
+            LicenseUri = 'https://github.com/nicholasdille/PowerShell-HetznerCloud/blob/master/LICENSE'
+            ProjectUri = 'https://github.com/nicholasdille/PowerShell-HetznerCloud'
+            ReleaseNotes = 'https://github.com/nicholasdille/PowerShell-HetznerCloud/blob/master/RELEASENOTES.md'
         }
     }
 }
