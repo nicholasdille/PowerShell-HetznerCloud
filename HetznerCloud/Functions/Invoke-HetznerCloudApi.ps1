@@ -44,10 +44,13 @@ function Invoke-HetznerCloudApi {
 
     $ApiData = Get-HetznerCloud
 
+    $BSTR = [System.Runtime.InteropServices.Marshal]::SecureStringToBSTR($ApiData.Token)
+    $PlainPassword = [System.Runtime.InteropServices.Marshal]::PtrToStringAuto($BSTR)
     $Params = @{
         Method = $Method
-        Authentication = 'Bearer'
-        Token = $ApiData.Token
+        Headers = @{
+            'Authorization' = "Bearer $PlainPassword"
+        }
         ContentType = 'application/json'
     }
     if ($PSBoundParameters.ContainsKey('Payload')) {
