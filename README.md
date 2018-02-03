@@ -1,6 +1,6 @@
 # Introduction
 
-Cmdlets for [Hetzner Cloud](https://www.hetzner.com/cloud) **build for PowerShell Core 6**
+Cmdlets for [Hetzner Cloud](https://www.hetzner.com/cloud) working for Windows PowerShell 3+ and PowerShell Core 6
 
 [![Build status](https://ci.appveyor.com/api/projects/status/7vbg47o01ju1h8gq?svg=true)](https://ci.appveyor.com/project/nicholasdille/powershell-hetznercloud) [![Download](https://img.shields.io/badge/powershellgallery-HetznerCloud-blue.svg)](https://www.powershellgallery.com/packages/HetznerCloud/)
 
