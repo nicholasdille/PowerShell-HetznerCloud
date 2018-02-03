@@ -1,3 +1,7 @@
+# 0.8.15
+
+- Fixes functions exports
+
 # 0.8.10
 
 - First bunch of custom objects and formats
