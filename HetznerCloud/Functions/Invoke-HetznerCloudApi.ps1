@@ -1,3 +1,5 @@
+#requires -Version 3
+
 function Invoke-HetznerCloudApi {
     [CmdletBinding()]
     param(
