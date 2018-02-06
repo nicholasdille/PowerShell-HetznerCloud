@@ -4,11 +4,11 @@ Module Name: HetznerCloud
 online version:
 schema: 2.0.0
 ---
-
 # Set-HetznerCloud
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+
+Set authentication information
 
 ## SYNTAX
 
@@ -17,21 +17,14 @@ Set-HetznerCloud [-Token] <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
 
-## EXAMPLES
-
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
-```
-
-{{ Add example description here }}
+This cmdlet stores authentication information in the context of the module for use by `Invoke-HetznerCloudApi`. The information is read by `Get-HetznerCloud`.
 
 ## PARAMETERS
 
 ### -Token
-{{Fill Token Description}}
+
+The API token for the Hetzner Cloud as retrieved from the web console.
 
 ```yaml
 Type: String
@@ -46,18 +39,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-### None
-
-
-## OUTPUTS
-
-### System.Object
-
-## NOTES
-
 ## RELATED LINKS
+
+Get-HetznerCloud
+Invoke-HetznerCloudApi

@@ -4,11 +4,11 @@ Module Name: HetznerCloud
 online version:
 schema: 2.0.0
 ---
-
 # Invoke-HetznerCloudApi
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+
+Wrapper for the API of the Hetzner Cloud
 
 ## SYNTAX
 
@@ -19,21 +19,15 @@ Invoke-HetznerCloudApi [-Api] <String> [[-Id] <Int32>] [[-Action] <String>] [[-A
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
 
-## EXAMPLES
+This cmdlet implements authentication and pagination for the API of the Hetzner Cloud. It is not exposed but only used internally by other cmdlets in this module.
 
-### Example 1
-```powershell
-PS C:\> {{ Add example code here }}
-```
-
-{{ Add example description here }}
 
 ## PARAMETERS
 
 ### -Action
-{{Fill Action Description}}
+
+The specified action is used in an URI of the form `/<api>/<id>/actions/<action>` to execute an action on a specific item
 
 ```yaml
 Type: String
@@ -48,7 +42,8 @@ Accept wildcard characters: False
 ```
 
 ### -ActionId
-{{Fill ActionId Description}}
+
+The specified action ID is used in an URI of the form `/<api>/<id>/actions/<actionid>` to retrieve or modify a single action item
 
 ```yaml
 Type: Int32
@@ -63,7 +58,8 @@ Accept wildcard characters: False
 ```
 
 ### -Api
-{{Fill Api Description}}
+
+The specified API is used in an URI of the form `/<api>` to retrieve or modify items or the same topic
 
 ```yaml
 Type: String
@@ -78,7 +74,8 @@ Accept wildcard characters: False
 ```
 
 ### -CustomAction
-{{Fill CustomAction Description}}
+
+The specified API is used in an URI of the form `/<api>/<id>/<customaction>` to execute an action on a single item
 
 ```yaml
 Type: String
@@ -93,7 +90,8 @@ Accept wildcard characters: False
 ```
 
 ### -Id
-{{Fill Id Description}}
+
+The specified API is used in an URI of the form `/<api>/<id>` to retrieve or modify a single item
 
 ```yaml
 Type: Int32
@@ -108,7 +106,8 @@ Accept wildcard characters: False
 ```
 
 ### -Method
-{{Fill Method Description}}
+
+The HTTP method to use when operating the API
 
 ```yaml
 Type: WebRequestMethod
@@ -124,7 +123,8 @@ Accept wildcard characters: False
 ```
 
 ### -PageSize
-{{Fill PageSize Description}}
+
+How many items per page to retrieve
 
 ```yaml
 Type: Int32
@@ -139,7 +139,8 @@ Accept wildcard characters: False
 ```
 
 ### -Payload
-{{Fill Payload Description}}
+
+The payload to send in the body of an HTTP request
 
 ```yaml
 Type: Hashtable
@@ -154,18 +155,11 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-### None
-
-
-## OUTPUTS
-
-### System.Object
-
-## NOTES
-
 ## RELATED LINKS
+
+Get-HetznerCloud
+Set-HetznerCloud
