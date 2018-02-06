@@ -27,6 +27,14 @@ This cmdlet is used as a wrapper for the information required to operate the API
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
+## INPUTS
+
+### None
+
+## OUTPUTS
+
+### hashtable
+
 ## RELATED LINKS
 
 Get-HetznerCloud
