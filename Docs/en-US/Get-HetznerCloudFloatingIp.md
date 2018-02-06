@@ -4,30 +4,34 @@ Module Name: HetznerCloud
 online version:
 schema: 2.0.0
 ---
-
 # Get-HetznerCloudFloatingIp
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+
+Retrieves floating IPs
 
 ## SYNTAX
 
 ### None (Default)
+
 ```
 Get-HetznerCloudFloatingIp [<CommonParameters>]
 ```
 
 ### ById
+
 ```
 Get-HetznerCloudFloatingIp [-Id <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+
+Floating IPs are used to assign a permanent IP address to a server. The output is parsed into a custom type and format called `HetznerCloudFloatingIp`.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
 PS C:\> {{ Add example code here }}
 ```
@@ -37,7 +41,8 @@ PS C:\> {{ Add example code here }}
 ## PARAMETERS
 
 ### -Id
-{{Fill Id Description}}
+
+The ID of a floating IP
 
 ```yaml
 Type: String
@@ -52,6 +57,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -59,11 +65,12 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### None
 
-
 ## OUTPUTS
 
-### System.Object
-
-## NOTES
+### HetznerCloudFloatingIp
 
 ## RELATED LINKS
+
+Get-HetznerCloudFloatingIp
+New-HetznerCloudFloatingIp
+Remove-HetznerCloudFloatingIp

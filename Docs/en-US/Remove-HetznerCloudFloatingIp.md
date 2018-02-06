@@ -4,11 +4,11 @@ Module Name: HetznerCloud
 online version:
 schema: 2.0.0
 ---
-
 # Remove-HetznerCloudFloatingIp
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+
+Removes a floating IP
 
 ## SYNTAX
 
@@ -17,36 +17,32 @@ Remove-HetznerCloudFloatingIp [-Id] <Int32[]> [-WhatIf] [-Confirm] [<CommonParam
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+
+The specified floating IP is unassigned from a server and removed.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-HetznerCloudFloatingIp -Id 939
 ```
 
-{{ Add example description here }}
+Removes the floating IPs with the specified ID.
+
+### Example 2
+
+```powershell
+PS C:\> Get-HetznerCloudFloatingIp | Remove-HetznerCloudFloatingIp
+```
+
+Removes all floating IPs sent by `Get-HetznerCloudFloatingIp`.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Id
-{{Fill Id Description}}
+
+The ID of the floating IP
 
 ```yaml
 Type: Int32[]
@@ -60,23 +56,8 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -84,10 +65,9 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.Int32[]
 
-
 ## OUTPUTS
 
-### System.Object
+### None
 
 ## NOTES
 
