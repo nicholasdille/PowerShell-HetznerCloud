@@ -66,7 +66,7 @@ Fingerprint : ca:82:7b:d6:7c:bb:70:5f:12:2a:3b:29:bf:0e:a2:fd
 PublicKey   : ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLF1P9cSi8YXclN1vpLOFKydIczWbfJj92RWLOeo3dmrPGkeBtmtpJU3DWqWxJkelag
               r5oQGn5XRu08GfdKJyPCZEoThzqaRHOKZGN79JpRjabIm8boHQE04cYP+0L4wbN53dpthPCeA6FkDNyKoJ+K8qTqmLDGsO2ztVLBMXEU3
               kiler/4jSLP+kbMn5tSuHlyZdsv+4DaZb3atwkC7yrZd/uF4t8uCO+xB6k3USHqmcgguzCu25V0yGqjlvDb2Jz1InoYdpCqbEMIvHVxMs
-              d7dJHYO6afgn8GWOHsbpyPzJn2v73nldtJUJoSr2UDrpwkKZ3zVUnO/9aw5Y5qiR7 nicholas@anneliese
+              d7dJHYO6afgn8GWOHsbpyPzJn2v73nldtJUJoSr2UDrpwkKZ3zVUnO/9aw5Y5qiR7 someone@somewhere
 ```
 
 Retrieves detailed information about a SSH key.
