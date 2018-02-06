@@ -1,4 +1,4 @@
-function Add-HetznerCloudSShKey {
+function Add-HetznerCloudSshKey {
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact='Low')]
     param(
         [Parameter(Mandatory)]
