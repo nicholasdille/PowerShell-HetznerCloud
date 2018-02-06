@@ -7,5 +7,14 @@ function Get-HetznerCloudServerType {
         $Id
     )
 
-    Invoke-HetznerCloudApi -Api 'server_types' @PSBoundParameters
+    Invoke-HetznerCloudApi -Api 'server_types' @PSBoundParameters | ForEach-Object {
+        [pscustomobject]@{
+            Name = $_.name
+            Cores = $_.cores
+            Memory = $_.memory
+            Storage = $_.disk
+            StorageType = $_.storage_type
+            PSTypeName = 'HetznerCloudServerType'
+        }
+    }
 }
