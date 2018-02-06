@@ -9,6 +9,7 @@ function Get-HetznerCloudServerType {
 
     Invoke-HetznerCloudApi -Api 'server_types' @PSBoundParameters | ForEach-Object {
         [pscustomobject]@{
+            Id = $_.id
             Name = $_.name
             Cores = $_.cores
             Memory = $_.memory
