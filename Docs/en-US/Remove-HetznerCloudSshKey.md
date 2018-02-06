@@ -4,11 +4,11 @@ Module Name: HetznerCloud
 online version:
 schema: 2.0.0
 ---
-
 # Remove-HetznerCloudSshKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+
+Removes a SSH public key
 
 ## SYNTAX
 
@@ -17,35 +17,31 @@ Remove-HetznerCloudSshKey [-Id] <Int32[]> [-WhatIf] [-Confirm] [<CommonParameter
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+
+This cmdlet removes a SSH key from the Hetzner Cloud
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-HetznerCloudSshKey -Id 1841
 ```
 
-{{ Add example description here }}
+Removes a SSH public key with the given internal ID.
+
+### Example 2
+
+```powershell
+PS C:\> Get-HetznerCloudSshKey | Remove-HetznerCloudSshKey
+```
+
+Removes all SSH public keys provided by `Get-HetznerCloudSshKey`
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Id
+
 {{Fill Id Description}}
 
 ```yaml
@@ -60,35 +56,14 @@ Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-### System.Int32[]
-
-
-## OUTPUTS
-
-### System.Object
-
-## NOTES
-
 ## RELATED LINKS
+
+Add-HetznerCloudSshKey
+Get-HetznerCloudSshKey
+New-HetznerCloudServer
+Enable-HetznerCloudServerRescue

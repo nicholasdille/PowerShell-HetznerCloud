@@ -4,11 +4,11 @@ Module Name: HetznerCloud
 online version:
 schema: 2.0.0
 ---
-
 # Add-HetznerCloudSShKey
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+
+Adds an SSH public key
 
 ## SYNTAX
 
@@ -17,35 +17,23 @@ Add-HetznerCloudSShKey [-Name] <String> [-PublicKey] <String> [-WhatIf] [-Confir
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+
+This cmdlet adds the public key of an existing SSH key pair to use in the Hetzner Cloud.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Add-HetznerCloudSShKey -Name 'mykey' -PublicKey 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDLF1P9cSi8YXclN1vpLOFKydIczWbfJj92RWLOeo3dmrPGkeBtmtpJU3DWqWxJkelagr5oQGn5XRu08GfdKJyPCZEoThzqaRHOKZGN79JpRjabIm8boHQE04cYP+0L4wbN53dpthPCeA6FkDNyKoJ+K8qTqmLDGsO2ztVLBMXEU3kiler/4jSLP+kbMn5tSuHlyZdsv+4DaZb3atwkC7yrZd/uF4t8uC+xB6k3USHqmcgguzCu25V0yGqjlvDb2Jz1InoYdpCqbEMIvHVxMsd7dJHYO6afgn8GWOHsbpyPzJn2v73nldtJUJoSr2UDrpwkKZ3zVUnO/9aw5Y5qiR7 someone@somewhere'
 ```
 
-{{ Add example description here }}
+Adds a new SSH public key called `mykey`.
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Name
+
 {{Fill Name Description}}
 
 ```yaml
@@ -61,6 +49,7 @@ Accept wildcard characters: False
 ```
 
 ### -PublicKey
+
 {{Fill PublicKey Description}}
 
 ```yaml
@@ -75,35 +64,14 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
-## INPUTS
-
-### None
-
-
-## OUTPUTS
-
-### System.Object
-
-## NOTES
-
 ## RELATED LINKS
+
+Get-HetznerCloudSshKey
+Remove-HetznerCloudSshKey
+New-HetznerCloudServer
+Enable-HetznerCloudServerRescue
