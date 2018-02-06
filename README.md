@@ -1,6 +1,6 @@
 # Introduction
 
-Cmdlets for [Hetzner Cloud](https://www.hetzner.com/cloud) working for Windows PowerShell 3+ and PowerShell Core 6
+Cmdlets for [Hetzner Cloud](https://www.hetzner.com/cloud) covering the [API](https://docs.hetzner.cloud/) working for Windows PowerShell 3+ and PowerShell Core 6
 
 [![Build status](https://ci.appveyor.com/api/projects/status/7vbg47o01ju1h8gq?svg=true)](https://ci.appveyor.com/project/nicholasdille/powershell-hetznercloud) [![Download](https://img.shields.io/badge/powershellgallery-HetznerCloud-blue.svg)](https://www.powershellgallery.com/packages/HetznerCloud/)
 
@@ -15,7 +15,7 @@ Get-Command -Module HetznerCloud
 
 ### Configuring your API token
 
-You will need to call the following cmdlet to configure the module to use your API token. 
+You will need to call the following cmdlet to configure the module to use your API token.
 
 ```powershell
 Set-HetznerCloud -Token 'my_token_from_the_web_console'
