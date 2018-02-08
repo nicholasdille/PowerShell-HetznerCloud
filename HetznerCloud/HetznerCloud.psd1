@@ -1,6 +1,6 @@
 ﻿@{
     RootModule = 'HetznerCloud.psm1'
-    ModuleVersion = '0.8'
+    ModuleVersion = '0.8.15'
     GUID = 'cbab1272-69f6-4fa8-94d0-ae96e2303ee5'
     Author = 'Nicholas Dille'
     #CompanyName = ''
