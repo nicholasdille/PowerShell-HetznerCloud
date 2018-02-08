@@ -24,7 +24,6 @@ test_script:
     $ErrorActionPreference = 'Stop';
     $Response = Invoke-RestMethod -Uri 'https://api.github.com/repos/nicholasdille/powershell-build/releases';
     $Release = $Response | Where-Object { $_.tag_name -like $env:BuildToolsVersion } | Sort-Object -Property tag_name -Descending | Select-Object -First 1;
-    Write-Host -ForegroundColor Yellow "Using release $($Release.tag_name) of build tools";
     Invoke-WebRequest -Uri $Release.zipball_url -OutFile Build.zip;
     Expand-Archive -Path '.\Build.zip' -DestinationPath .;
     Remove-Item -Path '.\Build.zip';
