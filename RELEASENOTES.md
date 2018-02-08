@@ -1,3 +1,8 @@
+# 0.8.15.26
+
+- Migrated to centralized build tools
+- Switched to three part version numbers
+
 # 0.8.15
 
 - Fixes functions exports
