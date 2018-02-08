@@ -1,13 +1,19 @@
-# 0.8.15.28
+# Release Notes
+
+## 0.8.15.n
+
+- Migrated to new format of release notes
+
+## 0.8.15.28
 
 - Migrated to centralized build tools
 - Switched to three part version numbers
 
-# 0.8.15
+## 0.8.15
 
 - Fixes functions exports
 
-# 0.8.10
+## 0.8.10
 
 - First bunch of custom objects and formats
 - Helper to wait for server action to complete
@@ -22,11 +28,11 @@
 - Added support for DNS PTR entries for floating IPs
 - Added (un)registering floating IPs after creation
 
-# 0.5.8
+## 0.5.8
 
 - Added usage information
 - Added badges
 
-# 0.5.3
+## 0.5.3
 
 - Initial build
