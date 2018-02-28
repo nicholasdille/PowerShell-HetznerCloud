@@ -12,7 +12,7 @@ Adds an SSH public key
 
 ## SYNTAX
 
-```
+```powershell
 Add-HetznerCloudSshKey [-Name] <String> [-PublicKey] <String> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
@@ -34,7 +34,7 @@ Adds a new SSH public key called `mykey`.
 
 ### -Name
 
-{{Fill Name Description}}
+Name of the SSH public key
 
 ```yaml
 Type: String
@@ -50,7 +50,7 @@ Accept wildcard characters: False
 
 ### -PublicKey
 
-{{Fill PublicKey Description}}
+SSH public key to be added
 
 ```yaml
 Type: String

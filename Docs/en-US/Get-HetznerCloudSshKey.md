@@ -14,13 +14,13 @@ Retreive SSH keys
 
 ### None (Default)
 
-```
+```powershell
 Get-HetznerCloudSshKey [<CommonParameters>]
 ```
 
 ### ById
 
-```
+```powershell
 Get-HetznerCloudSshKey [-Id <String>] [<CommonParameters>]
 ```
 
