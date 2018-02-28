@@ -35,7 +35,7 @@ function New-HetznerCloudServer {
         [switch]
         $NoStartAfterCreate
     )
-    
+
     begin {
         if (-not $PSBoundParameters.ContainsKey('Confirm')) {
             $ConfirmPreference = $PSCmdlet.SessionState.PSVariable.GetValue('ConfirmPreference')

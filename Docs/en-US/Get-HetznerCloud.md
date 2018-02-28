@@ -34,8 +34,3 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## OUTPUTS
 
 ### hashtable
-
-## RELATED LINKS
-
-Get-HetznerCloud
-Set-HetznerCloud

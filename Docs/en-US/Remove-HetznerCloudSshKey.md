@@ -68,10 +68,3 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## OUTPUTS
 
 ### None
-
-## RELATED LINKS
-
-Add-HetznerCloudSshKey
-Get-HetznerCloudSshKey
-New-HetznerCloudServer
-Enable-HetznerCloudServerRescue

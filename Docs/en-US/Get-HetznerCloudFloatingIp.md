@@ -68,9 +68,3 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## OUTPUTS
 
 ### HetznerCloudFloatingIp
-
-## RELATED LINKS
-
-Get-HetznerCloudFloatingIp
-New-HetznerCloudFloatingIp
-Remove-HetznerCloudFloatingIp

@@ -121,11 +121,3 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## OUTPUTS
 
 ### HetznerCloudIso
-
-## RELATED LINKS
-
-Get-HetznerCloudLocation
-Get-HetznerCloudDatacenter
-Get-HetznerCloudServerType
-Get-HetznerCloudImage
-Get-HetznerCloudPricing

@@ -54,11 +54,3 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## OUTPUTS
 
 ### hashtable
-
-## RELATED LINKS
-
-Get-HetznerCloudDatacenter
-Get-HetznerCloudLocation
-Get-HetznerCloudServerType
-Get-HetznerCloudImage
-Get-HetznerCloudIso
