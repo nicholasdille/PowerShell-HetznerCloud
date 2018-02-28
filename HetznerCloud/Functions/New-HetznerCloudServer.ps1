@@ -1,5 +1,5 @@
 function New-HetznerCloudServer {
-    [CmdletBinding(SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(SupportsShouldProcess, ConfirmImpact='Medium', DefaultParameterSetName='ByDatacenter')]
     param(
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
@@ -18,7 +18,7 @@ function New-HetznerCloudServer {
         ,
         [Parameter(Mandatory)]
         [ValidateNotNullOrEmpty()]
-        [int[]]
+        [string[]]
         $SshKey
         ,
         [Parameter(ParameterSetName='ByDatacenter')]
@@ -46,11 +46,20 @@ function New-HetznerCloudServer {
     }
 
     process {
+        $SshKeyIds = @()
+        $SshKeys = Get-HetznerCloudSshKey
+        foreach ($KeyName in $SshKey) {
+            $SshKeyId = $SshKeys | Where-Object { $_.Name -ieq $KeyName } | Select-Object -ExpandProperty Id
+            if (-not $SshKeyId) {
+                throw "SSH key with name $KeyName not found"
+            }
+            $SshKeyIds += $SshKeyId
+        }
         $Payload = @{
             name = $Name
             server_type = $Type
             image = $Image
-            ssh_keys = $SshKey
+            ssh_keys = $SshKeyIds
         }
         if ($PSBoundParameters.ContainsKey('NoStartAfterCreate')) {
             $Payload.Add('start_after_create', $false)
