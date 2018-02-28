@@ -42,7 +42,7 @@ Removes all SSH public keys provided by `Get-HetznerCloudSshKey`
 
 ### -Id
 
-{{Fill Id Description}}
+ID of the SSH key to remove
 
 ```yaml
 Type: Int32[]
