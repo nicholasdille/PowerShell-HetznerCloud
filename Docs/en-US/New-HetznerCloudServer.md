@@ -8,37 +8,61 @@ schema: 2.0.0
 # New-HetznerCloudServer
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+
+Creates a new server in the Hetzner Cloud
 
 ## SYNTAX
 
 ### ByDatacenter
-```
-New-HetznerCloudServer -Name <String> -Type <String> -Image <String> -SshKey <Int32[]> [-Datacenter <String>]
- [-NoStartAfterCreate] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+```powershell
+New-HetznerCloudServer -Name <String> -Type <String> -Image <String> -SshKey <String[]> [-Datacenter <String>]
+ [-NoStartAfterCreate] [<CommonParameters>]
 ```
 
 ### ByLocation
-```
-New-HetznerCloudServer -Name <String> -Type <String> -Image <String> -SshKey <Int32[]> [-Location <String>]
- [-NoStartAfterCreate] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+```powershell
+New-HetznerCloudServer -Name <String> -Type <String> -Image <String> -SshKey <String[]> [-Location <String>]
+ [-NoStartAfterCreate] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+
+Creates a new server in the Hetzner Cloud based on the specified data. The result is parsed into a custom type and displayed using a custom format.
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> New-HetznerCloudServer -Name test -Type cx11 -Image ubuntu-16.04 -SshKey default -Datacenter fsn1-dc8
+
+
+id               : 540882
+name             : test
+status           : initializing
+created          : 28.02.2018 15:42:13
+public_net       : @{ipv4=; ipv6=; floating_ips=System.Object[]}
+server_type      : @{id=1; name=cx11; description=CX11; cores=1; memory=2; disk=20; prices=System.Object[]; storage_type=local}
+datacenter       : @{id=1; name=fsn1-dc8; description=Falkenstein 1 DC 8; location=; server_types=}
+image            : @{id=1; type=system; status=available; name=ubuntu-16.04; description=Ubuntu 16.04; image_size=; disk_size=5; created=15.01.2018 12:34:45; created_from=; bound_to=;
+                   os_flavor=ubuntu; os_version=16.04; rapid_deploy=True}
+iso              :
+rescue_enabled   : False
+locked           : False
+backup_window    :
+outgoing_traffic : 0
+ingoing_traffic  : 0
+included_traffic : 21990232555520
 ```
 
-{{ Add example description here }}
+Creates a new server called `test` of type `cx11` in the datacenter `fsn1-dc8` based on image `ubuntu-16.04` and with the SSH key 4148.
 
 ## PARAMETERS
 
 ### -Confirm
+
 Prompts you for confirmation before running the cmdlet.
 
 ```yaml
@@ -54,7 +78,8 @@ Accept wildcard characters: False
 ```
 
 ### -Datacenter
-{{Fill Datacenter Description}}
+
+The datacenter to create the server in
 
 ```yaml
 Type: String
@@ -70,7 +95,8 @@ Accept wildcard characters: False
 ```
 
 ### -Image
-{{Fill Image Description}}
+
+The image to base the server on
 
 ```yaml
 Type: String
@@ -86,7 +112,8 @@ Accept wildcard characters: False
 ```
 
 ### -Location
-{{Fill Location Description}}
+
+The location to create the server in
 
 ```yaml
 Type: String
@@ -102,7 +129,8 @@ Accept wildcard characters: False
 ```
 
 ### -Name
-{{Fill Name Description}}
+
+The name of the new server
 
 ```yaml
 Type: String
@@ -117,7 +145,8 @@ Accept wildcard characters: False
 ```
 
 ### -NoStartAfterCreate
-{{Fill NoStartAfterCreate Description}}
+
+Wether to create the server without starting it
 
 ```yaml
 Type: SwitchParameter
@@ -132,10 +161,11 @@ Accept wildcard characters: False
 ```
 
 ### -SshKey
-{{Fill SshKey Description}}
+
+A list of SSH key names to authenticate with
 
 ```yaml
-Type: Int32[]
+Type: String[]
 Parameter Sets: (All)
 Aliases:
 
@@ -147,7 +177,8 @@ Accept wildcard characters: False
 ```
 
 ### -Type
-{{Fill Type Description}}
+
+The type of the new server
 
 ```yaml
 Type: String
@@ -162,23 +193,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -186,11 +202,6 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### None
 
-
 ## OUTPUTS
 
-### System.Object
-
-## NOTES
-
-## RELATED LINKS
+### HetznerCloudServer
