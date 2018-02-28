@@ -12,7 +12,7 @@ Set authentication information
 
 ## SYNTAX
 
-```
+```powershell
 Set-HetznerCloud [-Token] <String> [<CommonParameters>]
 ```
 

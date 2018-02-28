@@ -14,13 +14,13 @@ Retrieves information about datacenters
 
 ### None (Default)
 
-```
+```powershell
 Get-HetznerCloudDatacenter [<CommonParameters>]
 ```
 
 ### ById
 
-```
+```powershell
 Get-HetznerCloudDatacenter [-Id <String>] [<CommonParameters>]
 ```
 

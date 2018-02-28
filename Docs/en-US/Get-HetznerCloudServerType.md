@@ -14,13 +14,13 @@ Retrieves information about server types
 
 ### None (Default)
 
-```
+```powershell
 Get-HetznerCloudServerType [<CommonParameters>]
 ```
 
 ### ById
 
-```
+```powershell
 Get-HetznerCloudServerType [-Id <String>] [<CommonParameters>]
 ```
 
@@ -99,7 +99,7 @@ This call produces informaton about a single server type.
 
 ### -Id
 
-{{Fill Id Description}}
+ID of the server type to get
 
 ```yaml
 Type: String

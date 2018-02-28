@@ -14,13 +14,13 @@ Retrieves information about datacenter locations
 
 ### None (Default)
 
-```
+```powershell
 Get-HetznerCloudLocation [<CommonParameters>]
 ```
 
 ### ById
 
-```
+```powershell
 Get-HetznerCloudLocation [-Id <String>] [<CommonParameters>]
 ```
 

@@ -12,7 +12,7 @@ Wrapper for the API of the Hetzner Cloud
 
 ## SYNTAX
 
-```
+```powershell
 Invoke-HetznerCloudApi [-Api] <String> [[-Id] <Int32>] [[-Action] <String>] [[-ActionId] <Int32>]
  [[-CustomAction] <String>] [[-Method] <WebRequestMethod>] [[-Payload] <Hashtable>] [[-PageSize] <Int32>]
  [<CommonParameters>]

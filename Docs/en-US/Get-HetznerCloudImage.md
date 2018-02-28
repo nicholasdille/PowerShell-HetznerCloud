@@ -14,13 +14,13 @@ Retrieves information about images
 
 ### None (Default)
 
-```
+```powershell
 Get-HetznerCloudImage [<CommonParameters>]
 ```
 
 ### ById
 
-```
+```powershell
 Get-HetznerCloudImage [-Id <String>] [<CommonParameters>]
 ```
 

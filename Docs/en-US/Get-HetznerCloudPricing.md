@@ -12,7 +12,7 @@ Retrieves priving information
 
 ## SYNTAX
 
-```
+```powershell
 Get-HetznerCloudPricing [<CommonParameters>]
 ```
 

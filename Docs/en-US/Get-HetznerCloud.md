@@ -12,7 +12,7 @@ Retrieves the endpoint and authentication information
 
 ## SYNTAX
 
-```
+```powershell
 Get-HetznerCloud [<CommonParameters>]
 ```
 

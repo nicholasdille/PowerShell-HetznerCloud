@@ -14,13 +14,13 @@ Retrieves information about ISOs
 
 ### None (Default)
 
-```
+```powershell
 Get-HetznerCloudIso [<CommonParameters>]
 ```
 
 ### ById
 
-```
+```powershell
 Get-HetznerCloudIso [-Id <String>] [<CommonParameters>]
 ```
 
