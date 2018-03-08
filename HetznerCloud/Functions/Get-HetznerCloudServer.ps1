@@ -18,6 +18,7 @@ function Get-HetznerCloudServer {
             Location = $_.datacenter.location.name
             Image = $_.image.name
             Iso = ''
+            Backup = $_.backup_window
             RescueSystem = $_.rescue_enabled
             'PSTypeName' = 'HetznerCloudServer'
         }
