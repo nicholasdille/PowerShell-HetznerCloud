@@ -1,17 +1,24 @@
 function Enable-HetznerCloudServerRescue {
     [CmdletBinding()]
     param(
-        [Parameter(Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+        [Parameter(ParameterSetName='ByName')]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        $Name
+        ,
+        [Parameter(ParameterSetName='ById', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
         [int[]]
         $Id
         ,
-        [Parameter()]
+        [Parameter(ParameterSetName='ByName')]
+        [Parameter(ParameterSetName='ById')]
         [ValidateSet('linux64', 'linux32', 'freebsd64')]
         [string]
         $Type = 'linux64'
         ,
-        [Parameter()]
+        [Parameter(ParameterSetName='ByName')]
+        [Parameter(ParameterSetName='ById')]
         [ValidateNotNullOrEmpty()]
         [int[]]
         $SshKey
@@ -27,6 +34,10 @@ function Enable-HetznerCloudServerRescue {
     }
 
     process {
+        if ($PSCmdlet.ParameterSetName -ieq 'ByName') {
+            $Id = Get-HetznerCloudServer -Name $Name | Select-Object -ExpandProperty Id
+        }
+
         $Id | ForEach-Object {
             Invoke-HetznerCloudApi -Api 'servers' -Id $_ -Action 'enable_rescue' -Method 'Post' -Payload $Payload
         }

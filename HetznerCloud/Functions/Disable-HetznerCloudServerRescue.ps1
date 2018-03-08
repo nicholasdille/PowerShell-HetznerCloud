@@ -1,13 +1,22 @@
 function Disable-HetznerCloudServerRescue {
-    [CmdletBinding()]
+    [CmdletBinding(DefaultParameterSetName='ById')]
     param(
-        [Parameter(Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+        [Parameter(ParameterSetName='ByName')]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        $Name
+        ,
+        [Parameter(ParameterSetName='ById', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
         [int[]]
         $Id
     )
 
     process {
+        if ($PSCmdlet.ParameterSetName -ieq 'ByName') {
+            $Id = Get-HetznerCloudServer -Name $Name | Select-Object -ExpandProperty Id
+        }
+
         $Id | ForEach-Object {
             Invoke-HetznerCloudApi -Api 'servers' -Id $_ -Action 'disable_rescue' -Method 'Post'
         }

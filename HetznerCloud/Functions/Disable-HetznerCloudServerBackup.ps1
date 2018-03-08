@@ -1,7 +1,12 @@
 function Disable-HetznerCloudServerBackup {
-    [CmdletBinding(SupportsShouldProcess, ConfirmImpact='High')]
+    [CmdletBinding(DefaultParameterSetName='ById', SupportsShouldProcess, ConfirmImpact='High')]
     param(
-        [Parameter(Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+        [Parameter(ParameterSetName='ByName')]
+        [ValidateNotNullOrEmpty()]
+        [string]
+        $Name
+        ,
+        [Parameter(ParameterSetName='ById', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
         [int[]]
         $Id
@@ -17,6 +22,10 @@ function Disable-HetznerCloudServerBackup {
     }
 
     process {
+        if ($PSCmdlet.ParameterSetName -ieq 'ByName') {
+            $Id = Get-HetznerCloudServer -Name $Name | Select-Object -ExpandProperty Id
+        }
+
         $Id | ForEach-Object {
             Write-Verbose "Disable backup for server with ID <$_>"
             if ($Force -or $PSCmdlet.ShouldProcess("Disable backup for server with ID <$_>?")) {
