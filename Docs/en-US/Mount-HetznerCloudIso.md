@@ -8,45 +8,38 @@ schema: 2.0.0
 # Mount-HetznerCloudIso
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+
+Mounts an ISO on a server in the Hetzner Cloud
 
 ## SYNTAX
 
-```
+```powershell
 Mount-HetznerCloudIso [-Server] <Int32> [-Iso] <Int32> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 {{Fill in the Description}}
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Mount-HetznerCloudIso -Server 555995 -Iso 27
+
+action
+------
+@{id=336827; command=attach_iso; status=running; progress=0; started=2018-03-08T14:18:56+00:00; finished=; resources...
 ```
 
-{{ Add example description here }}
+Mount Ubuntu 16.03 to a server
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Iso
-{{Fill Iso Description}}
+
+ISO to be mounted on the server
 
 ```yaml
 Type: Int32
@@ -61,7 +54,8 @@ Accept wildcard characters: False
 ```
 
 ### -Server
-{{Fill Server Description}}
+
+ID of the server to mount the ISO on
 
 ```yaml
 Type: Int32
@@ -75,23 +69,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -99,11 +78,6 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### None
 
-
 ## OUTPUTS
 
 ### System.Object
-
-## NOTES
-
-## RELATED LINKS
