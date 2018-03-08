@@ -1,9 +1,9 @@
 function Enable-HetznerCloudServerBackup {
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact='Low')]
     param(
-        [Parameter(Mandatory)]
+        [Parameter(Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
-        [int]
+        [int[]]
         $Id
         ,
         [Parameter(Mandatory)]
@@ -11,7 +11,7 @@ function Enable-HetznerCloudServerBackup {
         [string]
         $Timeslot
     )
-    
+
     begin {
         if (-not $PSBoundParameters.ContainsKey('Confirm')) {
             $ConfirmPreference = $PSCmdlet.SessionState.PSVariable.GetValue('ConfirmPreference')
@@ -22,11 +22,14 @@ function Enable-HetznerCloudServerBackup {
     }
 
     process {
-        if ($Force -or $PSCmdlet.ShouldProcess("Enable backup for server with ID <$Id>?")) {
-            $Payload = @{
-                'backup_window' = $Timeslot
+        $Id | ForEach-Object {
+            Write-Verbose "Disable backup for server with ID <$_>"
+            if ($Force -or $PSCmdlet.ShouldProcess("Enable backup for server with ID <$_>?")) {
+                $Payload = @{
+                    'backup_window' = $Timeslot
+                }
+                Invoke-HetznerCloudApi -Api 'servers' -Method 'Post' -Id $_ -Action 'enable_backup' -Payload $Payload
             }
-            Invoke-HetznerCloudApi -Api 'servers' -Method 'Post' -Id $Id -Action 'enable_backup' -Payload $Payload
         }
     }
 }
