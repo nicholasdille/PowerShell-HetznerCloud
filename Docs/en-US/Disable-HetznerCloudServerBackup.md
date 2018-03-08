@@ -8,75 +8,64 @@ schema: 2.0.0
 # Disable-HetznerCloudServerBackup
 
 ## SYNOPSIS
-{{Fill in the Synopsis}}
+
+Disable backups for a server in the Hetzner Cloud
 
 ## SYNTAX
 
-```
-Disable-HetznerCloudServerBackup [-Id] <Int32> [-WhatIf] [-Confirm] [<CommonParameters>]
+```powershell
+Disable-HetznerCloudServerBackup [-Id] <Int32> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
-{{Fill in the Description}}
+
+Disabling backups also deletes all existing backups for a server
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Disable-HetznerCloudServerBackup -Id 541232
+
+action
+------
+@{id=336463; command=disable_backup; status=success; progress=0; started=2018-03-08T13:56:01+00:00; finished=2018-03...
 ```
 
-{{ Add example description here }}
+Disables backups for a server
+
+### Example 2
+
+```powershell
+PS C:\> Get-HetznerCloudServer | Disable-HetznerCloudServerBackup
+
+action
+------
+@{id=336463; command=disable_backup; status=success; progress=0; started=2018-03-08T13:56:01+00:00; finished=2018-03...
+```
+
+Disables backups for all servers
 
 ## PARAMETERS
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Id
-{{Fill Id Description}}
+ID of the server to enable backups for
 
 ```yaml
-Type: Int32
+Type: Int32[]
 Parameter Sets: (All)
 Aliases:
 
 Required: True
 Position: 0
 Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
+Accept pipeline input: True (ByPropertyName, ByValue)
 Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -88,7 +77,3 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## OUTPUTS
 
 ### System.Object
-
-## NOTES
-
-## RELATED LINKS
