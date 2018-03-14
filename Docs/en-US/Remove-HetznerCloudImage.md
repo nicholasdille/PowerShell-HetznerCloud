@@ -14,7 +14,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```powershell
-Remove-HetznerCloudImage [-Id] <Int32[]> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-HetznerCloudImage [-Id] <Int32[]> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

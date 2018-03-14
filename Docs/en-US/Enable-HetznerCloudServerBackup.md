@@ -67,7 +67,7 @@ Accept wildcard characters: False
 
 ### -Timeslot
 
-Timeslotfor backup
+Timeslot for backup
 
 ```yaml
 Type: String

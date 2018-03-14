@@ -14,7 +14,7 @@ Restarts a server in the Hetzner Cloud
 ## SYNTAX
 
 ```powershell
-Restart-HetznerCloudServer [-Id] <Int32[]> [[-Action] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Restart-HetznerCloudServer [-Id] <Int32[]> [[-Action] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

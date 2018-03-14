@@ -14,8 +14,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```powershell
-New-HetznerCloudImage [-Id] <Int32> [[-Type] <String>] [[-Description] <String>] [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-HetznerCloudImage [-Id] <Int32> [[-Type] <String>] [[-Description] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

@@ -14,7 +14,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```powershell
-Restore-HetznerCloudServer [-Id] <Int32> [-Image] <Int32> [-WhatIf] [-Confirm] [<CommonParameters>]
+Restore-HetznerCloudServer [-Id] <Int32> [-Image] <Int32> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

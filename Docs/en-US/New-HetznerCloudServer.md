@@ -16,15 +16,13 @@ Creates a new server in the Hetzner Cloud
 ### ByDatacenter
 
 ```powershell
-New-HetznerCloudServer -Name <String> -Type <String> -Image <String> -SshKey <String[]> [-Datacenter <String>]
- [-NoStartAfterCreate] [<CommonParameters>]
+New-HetznerCloudServer -Name <String> -Type <String> -Image <String> -SshKey <String[]> [-Datacenter <String>] [-NoStartAfterCreate] [<CommonParameters>]
 ```
 
 ### ByLocation
 
 ```powershell
-New-HetznerCloudServer -Name <String> -Type <String> -Image <String> -SshKey <String[]> [-Location <String>]
- [-NoStartAfterCreate] [<CommonParameters>]
+New-HetznerCloudServer -Name <String> -Type <String> -Image <String> -SshKey <String[]> [-Location <String>] [-NoStartAfterCreate] [<CommonParameters>]
 ```
 
 ## DESCRIPTION

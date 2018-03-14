@@ -15,15 +15,13 @@ Reserves a new floating IP
 ### ByServer
 
 ```powershell
-New-HetznerCloudFloatingIp -Type <String> [-Description <String>] -Server <String> [-Location <String>]
- [-WhatIf] [-Confirm] [<CommonParameters>]
+New-HetznerCloudFloatingIp -Type <String> [-Description <String>] -Server <String> [-Location <String>] [<CommonParameters>]
 ```
 
 ### ByLocation
 
 ```powershell
-New-HetznerCloudFloatingIp -Type <String> [-Description <String>] -Location <String> [-WhatIf] [-Confirm]
- [<CommonParameters>]
+New-HetznerCloudFloatingIp -Type <String> [-Description <String>] -Location <String> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

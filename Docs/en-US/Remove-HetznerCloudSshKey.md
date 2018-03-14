@@ -13,7 +13,7 @@ Removes a SSH public key
 ## SYNTAX
 
 ```powershell
-Remove-HetznerCloudSshKey [-Id] <Int32[]> [-WhatIf] [-Confirm] [<CommonParameters>]
+Remove-HetznerCloudSshKey [-Id] <Int32[]> [<CommonParameters>]
 ```
 
 ## DESCRIPTION

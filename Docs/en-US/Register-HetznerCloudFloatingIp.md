@@ -14,7 +14,7 @@ schema: 2.0.0
 ## SYNTAX
 
 ```powershell
-Register-HetznerCloudFloatingIp [-Id] <Int32> [-Server] <Int32> [-WhatIf] [-Confirm] [<CommonParameters>]
+Register-HetznerCloudFloatingIp [-Id] <Int32> [-Server] <Int32> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
