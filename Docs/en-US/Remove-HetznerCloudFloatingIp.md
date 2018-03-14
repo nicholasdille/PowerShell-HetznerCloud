@@ -12,7 +12,7 @@ Removes a floating IP
 
 ## SYNTAX
 
-```
+```powershell
 Remove-HetznerCloudFloatingIp [-Id] <Int32[]> [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 

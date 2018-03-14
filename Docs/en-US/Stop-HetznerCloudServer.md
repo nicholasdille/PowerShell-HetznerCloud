@@ -14,7 +14,7 @@ Stops a server in the Hetzner Cloud
 ## SYNTAX
 
 ```powershell
-Stop-HetznerCloudServer [-Id] <Int32[]> [[-Action] <String>] [-WhatIf] [-Confirm] [<CommonParameters>]
+Stop-HetznerCloudServer [-Id] <Int32[]> [[-Action] <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -91,9 +91,6 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.Int32[]
 
-
 ## OUTPUTS
 
 ### System.Object
-
-## NOTES

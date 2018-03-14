@@ -8,32 +8,38 @@ schema: 2.0.0
 # Set-HetznerCloudServer
 
 ## SYNOPSIS
+
 {{Fill in the Synopsis}}
 
 ## SYNTAX
 
 ### SetName
-```
-Set-HetznerCloudServer -Id <Int32> -Name <String> [-WhatIf] [-Confirm] [<CommonParameters>]
+
+```powershell
+Set-HetznerCloudServer -Id <Int32> -Name <String> [<CommonParameters>]
 ```
 
 ### SetType
-```
-Set-HetznerCloudServer -Id <Int32> -Type <String> [-AllowDowngrade] [-WhatIf] [-Confirm] [<CommonParameters>]
+
+```powershell
+Set-HetznerCloudServer -Id <Int32> -Type <String> [-AllowDowngrade] [<CommonParameters>]
 ```
 
 ### SetDnsPtr
-```
-Set-HetznerCloudServer -Id <Int32> -PrimaryIp <String> [-Hostname <String>] [-WhatIf] [-Confirm]
+
+```powershell
+Set-HetznerCloudServer -Id <Int32> -PrimaryIp <String> [-Hostname <String>]
  [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 {{Fill in the Description}}
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
 PS C:\> {{ Add example code here }}
 ```
@@ -43,6 +49,7 @@ PS C:\> {{ Add example code here }}
 ## PARAMETERS
 
 ### -AllowDowngrade
+
 {{Fill AllowDowngrade Description}}
 
 ```yaml
@@ -57,22 +64,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -Confirm
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Hostname
+
 {{Fill Hostname Description}}
 
 ```yaml
@@ -88,6 +81,7 @@ Accept wildcard characters: False
 ```
 
 ### -Id
+
 {{Fill Id Description}}
 
 ```yaml
@@ -103,6 +97,7 @@ Accept wildcard characters: False
 ```
 
 ### -Name
+
 {{Fill Name Description}}
 
 ```yaml
@@ -118,6 +113,7 @@ Accept wildcard characters: False
 ```
 
 ### -PrimaryIp
+
 {{Fill PrimaryIp Description}}
 
 ```yaml
@@ -133,6 +129,7 @@ Accept wildcard characters: False
 ```
 
 ### -Type
+
 {{Fill Type Description}}
 
 ```yaml
@@ -148,23 +145,8 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-### -WhatIf
-Shows what would happen if the cmdlet runs.
-The cmdlet is not run.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: wi
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
@@ -172,11 +154,6 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### None
 
-
 ## OUTPUTS
 
 ### System.Object
-
-## NOTES
-
-## RELATED LINKS

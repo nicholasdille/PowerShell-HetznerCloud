@@ -14,13 +14,13 @@ Retrieves floating IPs
 
 ### None (Default)
 
-```
+```powershell
 Get-HetznerCloudFloatingIp [<CommonParameters>]
 ```
 
 ### ById
 
-```
+```powershell
 Get-HetznerCloudFloatingIp [-Id <String>] [<CommonParameters>]
 ```
 

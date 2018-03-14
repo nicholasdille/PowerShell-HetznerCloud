@@ -19,7 +19,7 @@ Dismount-HetznerCloudIso [-Id] <Int32> [<CommonParameters>]
 
 ## DESCRIPTION
 
-{{Fill in the Description}}
+Unmounted an ISO from a server in the Hetzner Cloud
 
 ## EXAMPLES
 

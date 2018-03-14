@@ -14,7 +14,7 @@ Start a server
 ## SYNTAX
 
 ```powershell
-Start-HetznerCloudServer [-Id] <Int32[]> [-WhatIf] [-Confirm] [<CommonParameters>]
+Start-HetznerCloudServer [-Id] <Int32[]> [<CommonParameters>]
 ```
 
 ## DESCRIPTION
@@ -74,9 +74,6 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### System.Int32[]
 
-
 ## OUTPUTS
 
 ### System.Object
-
-## NOTES

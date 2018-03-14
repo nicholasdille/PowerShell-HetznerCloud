@@ -22,7 +22,6 @@ Invoke-HetznerCloudApi [-Api] <String> [[-Id] <Int32>] [[-Action] <String>] [[-A
 
 This cmdlet implements authentication and pagination for the API of the Hetzner Cloud. It is not exposed but only used internally by other cmdlets in this module.
 
-
 ## PARAMETERS
 
 ### -Action

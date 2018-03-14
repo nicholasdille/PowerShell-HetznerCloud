@@ -61,22 +61,6 @@ Creates a new server called `test` of type `cx11` in the datacenter `fsn1-dc8` b
 
 ## PARAMETERS
 
-### -Confirm
-
-Prompts you for confirmation before running the cmdlet.
-
-```yaml
-Type: SwitchParameter
-Parameter Sets: (All)
-Aliases: cf
-
-Required: False
-Position: Named
-Default value: None
-Accept pipeline input: False
-Accept wildcard characters: False
-```
-
 ### -Datacenter
 
 The datacenter to create the server in

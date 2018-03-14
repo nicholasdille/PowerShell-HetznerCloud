@@ -14,14 +14,14 @@ Reserves a new floating IP
 
 ### ByServer
 
-```
+```powershell
 New-HetznerCloudFloatingIp -Type <String> [-Description <String>] -Server <String> [-Location <String>]
  [-WhatIf] [-Confirm] [<CommonParameters>]
 ```
 
 ### ByLocation
 
-```
+```powershell
 New-HetznerCloudFloatingIp -Type <String> [-Description <String>] -Location <String> [-WhatIf] [-Confirm]
  [<CommonParameters>]
 ```
@@ -182,7 +182,3 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 ## OUTPUTS
 
 ### None
-
-## NOTES
-
-## RELATED LINKS

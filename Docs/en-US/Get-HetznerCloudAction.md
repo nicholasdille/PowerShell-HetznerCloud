@@ -8,26 +8,31 @@ schema: 2.0.0
 # Get-HetznerCloudAction
 
 ## SYNOPSIS
+
 {{Fill in the Synopsis}}
 
 ## SYNTAX
 
 ### None (Default)
-```
+
+```powershell
 Get-HetznerCloudAction [<CommonParameters>]
 ```
 
 ### ById
-```
+
+```powershell
 Get-HetznerCloudAction [-Id <String>] [<CommonParameters>]
 ```
 
 ## DESCRIPTION
+
 {{Fill in the Description}}
 
 ## EXAMPLES
 
 ### Example 1
+
 ```powershell
 PS C:\> {{ Add example code here }}
 ```
@@ -37,6 +42,7 @@ PS C:\> {{ Add example code here }}
 ## PARAMETERS
 
 ### -Id
+
 {{Fill Id Description}}
 
 ```yaml
@@ -52,6 +58,7 @@ Accept wildcard characters: False
 ```
 
 ### CommonParameters
+
 This cmdlet supports the common parameters: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction, and -WarningVariable.
 For more information, see about_CommonParameters (http://go.microsoft.com/fwlink/?LinkID=113216).
 
