@@ -26,16 +26,25 @@ Get-HetznerCloudServerAction [-Id] <Int32[]> [<CommonParameters>]
 ### Example 1
 
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-HetznerCloudServerAction -Id 566170
+
+id        : 397789
+command   : create_server
+status    : running
+progress  : 0
+started   : 2018-03-14T20:27:30+00:00
+finished  :
+resources : {@{id=566170; type=server}}
+error     :
 ```
 
-{{ Add example description here }}
+Retrieves actions for the server with the specified ID
 
 ## PARAMETERS
 
 ### -Id
 
-{{Fill Id Description}}
+ID to retrieve actions for
 
 ```yaml
 Type: Int32[]

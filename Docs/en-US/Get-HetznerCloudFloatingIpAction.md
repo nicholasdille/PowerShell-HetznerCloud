@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-{{Fill in the Synopsis}}
+Retrieves actions performed on a floating IP in the Hetzner Cloud
 
 ## SYNTAX
 
@@ -19,23 +19,23 @@ Get-HetznerCloudFloatingIpAction [-Id] <Int32[]> [<CommonParameters>]
 
 ## DESCRIPTION
 
-{{Fill in the Description}}
+Whenever you make changes to a floating IP in the Hetzner Cloud, an action is created which tracks and documents the change. This cmdlet retrieves them.
 
 ## EXAMPLES
 
 ### Example 1
 
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-HetznerCloudFloatingIpAction -Id 4053
 ```
 
-{{ Add example description here }}
+Retrieves all action regarding the floating IP with the specified ID
 
 ## PARAMETERS
 
 ### -Id
 
-{{Fill Id Description}}
+ID of the floating IP to retrieve actions for
 
 ```yaml
 Type: Int32[]

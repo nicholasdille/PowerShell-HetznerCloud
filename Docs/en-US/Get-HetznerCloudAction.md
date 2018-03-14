@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-{{Fill in the Synopsis}}
+Retrieve actions performed on your infrastructure in the Hetzner Cloud
 
 ## SYNTAX
 
@@ -27,23 +27,49 @@ Get-HetznerCloudAction [-Id <String>] [<CommonParameters>]
 
 ## DESCRIPTION
 
-{{Fill in the Description}}
+Whenever you make changes to your infrastructure in the Hetzner Cloud, an action is created which tracks and documents the change. This cmdlet retrieves them.
 
 ## EXAMPLES
 
 ### Example 1
 
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-HetznerCloudAction
+
+id        : 100580
+command   : assign_floating_ip
+status    : success
+progress  : 100
+started   : 2018-02-06T16:49:57+00:00
+finished  : 2018-02-06T16:50:00+00:00
+resources : {@{id=506843; type=server}, @{id=939; type=floating_ip}}
+error     :
 ```
 
-{{ Add example description here }}
+Retrieves a list of all action on your Hetzner Cloud infrastructure
+
+### Example 2
+
+```powershell
+PS C:\> Get-HetznerCloudAction -Id 100580
+
+id        : 100580
+command   : assign_floating_ip
+status    : success
+progress  : 100
+started   : 2018-02-06T16:49:57+00:00
+finished  : 2018-02-06T16:50:00+00:00
+resources : {@{id=506843; type=server}, @{id=939; type=floating_ip}}
+error     :
+```
+
+Retrieves a single action on your Hetzner Cloud infrastructure
 
 ## PARAMETERS
 
 ### -Id
 
-{{Fill Id Description}}
+ID of the action to retrieve
 
 ```yaml
 Type: String
@@ -66,11 +92,6 @@ For more information, see about_CommonParameters (http://go.microsoft.com/fwlink
 
 ### None
 
-
 ## OUTPUTS
 
 ### System.Object
-
-## NOTES
-
-## RELATED LINKS
