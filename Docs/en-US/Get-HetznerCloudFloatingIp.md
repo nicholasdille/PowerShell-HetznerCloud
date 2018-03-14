@@ -33,16 +33,32 @@ Floating IPs are used to assign a permanent IP address to a server. The output i
 ### Example 1
 
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Get-HetznerCloudFloatingIp
+
+IPAddress     Type Server
+---------     ---- ------
+78.46.231.143 ipv4
 ```
 
-{{ Add example description here }}
+Retrieves all floating IPs
+
+### Example 2
+
+```powershell
+PS C:\> Get-HetznerCloudFloatingIp -Id 4053
+
+IPAddress     Type Server
+---------     ---- ------
+78.46.231.143 ipv4
+```
+
+Retrieves a specific floating IP
 
 ## PARAMETERS
 
 ### -Id
 
-The ID of a floating IP
+ID of the floating IP to retrieve
 
 ```yaml
 Type: String

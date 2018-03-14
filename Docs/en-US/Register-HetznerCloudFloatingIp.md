@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-{{Fill in the Synopsis}}
+Assigns a new floating IP to a server in the Hetzner Cloud
 
 ## SYNTAX
 
@@ -19,23 +19,27 @@ Register-HetznerCloudFloatingIp [-Id] <Int32> [-Server] <Int32> [<CommonParamete
 
 ## DESCRIPTION
 
-{{Fill in the Description}}
+A floating IP is assigned to a server in the Hetzner Cloud
 
 ## EXAMPLES
 
 ### Example 1
 
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Register-HetznerCloudFloatingIp -Id 4053 -Server 566170
+
+action
+------
+@{id=397885; command=assign_floating_ip; status=running; progress=0; started=2018-03-14T20:41:24+00:00; finished=; r...
 ```
 
-{{ Add example description here }}
+Assigns the specified floating IP to the specified server
 
 ## PARAMETERS
 
 ### -Id
 
-{{Fill Id Description}}
+ID of the floating IP to be assigned to a server
 
 ```yaml
 Type: Int32
@@ -51,7 +55,7 @@ Accept wildcard characters: False
 
 ### -Server
 
-{{Fill Server Description}}
+ID of the server to assign a floating IP to
 
 ```yaml
 Type: Int32
