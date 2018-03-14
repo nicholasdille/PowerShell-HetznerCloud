@@ -22,6 +22,7 @@ build: false
 test_script:
 - ps: >-
     $ErrorActionPreference = 'Stop';
+    [System.Net.ServicePointManager]::SecurityProtocol = 'Tls11,Tls12';
     $Response = Invoke-RestMethod -Uri 'https://api.github.com/repos/nicholasdille/powershell-build/releases';
     $Release = $Response | Where-Object { $_.tag_name -like $env:BuildToolsVersion } | Sort-Object -Property tag_name -Descending | Select-Object -First 1;
     Write-Host -ForegroundColor Yellow -Message "Using version $($Release.tag_name) of build tools";
