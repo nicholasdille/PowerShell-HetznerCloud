@@ -21,7 +21,7 @@ function Set-HetznerCloudFloatingIp {
         [string]
         $Hostname
     )
-    
+
     begin {
         if (-not $PSBoundParameters.ContainsKey('Confirm')) {
             $ConfirmPreference = $PSCmdlet.SessionState.PSVariable.GetValue('ConfirmPreference')
@@ -34,7 +34,7 @@ function Set-HetznerCloudFloatingIp {
     process {
         if ($PSCmdlet.ParameterSetName -ieq 'SetDescription') {
             if ($Force -or $PSCmdlet.ShouldProcess("Change description of floating IP with ID <$Id> to <$Description>?")) {
-                Invoke-HetznerCloudApi -Api 'ssh_keys' -Method 'Put' -Id $Id -Payload @{
+                Invoke-HetznerCloudApi -Api 'floating_ips' -Method 'Put' -Id $Id -Payload @{
                     description = $Description
                 }
             }
@@ -48,7 +48,6 @@ function Set-HetznerCloudFloatingIp {
                 if ($PSBoundParameters.ContainsKey('Hostname')) {
                     $Payload['dns_ptr'] = $Hostname
                 }
-                $Payload | ConvertTo-Json
                 Invoke-HetznerCloudApi -Api 'floating_ips' -Method 'Post' -Id $Id -Action 'change_dns_ptr' -Payload $Payload
             }
         }
