@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-{{Fill in the Synopsis}}
+Wait for an action on a server to finish in the Hetzner Cloud
 
 ## SYNTAX
 
@@ -19,23 +19,23 @@ Wait-HetznerCloudServer [-Id] <Int32> [-Status] <String> [<CommonParameters>]
 
 ## DESCRIPTION
 
-{{Fill in the Description}}
+This cmdlet waits until the server reaches the state "Running" or "Off". It can be used to wait for an action to finish.
 
 ## EXAMPLES
 
 ### Example 1
 
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Wait-HetznerCloudServer -Id 571630 -Status Running
 ```
 
-{{ Add example description here }}
+Wait for the specified server to reach the running state
 
 ## PARAMETERS
 
 ### -Id
 
-{{Fill Id Description}}
+ID of the server
 
 ```yaml
 Type: Int32
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 
 ### -Status
 
-{{Fill Status Description}}
+Status of the server to wait for
 
 ```yaml
 Type: String

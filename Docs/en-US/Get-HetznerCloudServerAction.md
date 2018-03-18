@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-{{Fill in the Synopsis}}
+Retrieves actions for a server in the Hetzner Cloud
 
 ## SYNTAX
 
@@ -19,7 +19,7 @@ Get-HetznerCloudServerAction [-Id] <Int32[]> [<CommonParameters>]
 
 ## DESCRIPTION
 
-{{Fill in the Description}}
+This cmdlet retrieves a history of actions performaned on the specified server.
 
 ## EXAMPLES
 
