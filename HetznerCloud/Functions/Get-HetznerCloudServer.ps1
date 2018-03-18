@@ -34,7 +34,7 @@ function Get-HetznerCloudServer {
                         Where-Object { $_.Id -eq $FloatingIpId } |
                         Select-Object -ExpandProperty IPAddress
                 }
-                Iso = ''
+                Iso = $_.iso.name
                 Backup = $_.backup_window
                 RescueSystem = $_.rescue_enabled
                 'PSTypeName' = 'HetznerCloudServer'
