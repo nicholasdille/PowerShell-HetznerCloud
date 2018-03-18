@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-{{Fill in the Synopsis}}
+Sets the name of an SSH key in the Hetzner Cloud
 
 ## SYNTAX
 
@@ -19,23 +19,23 @@ Set-HetznerCloudSshKey [-Id] <Int32> [-Name] <String> [<CommonParameters>]
 
 ## DESCRIPTION
 
-{{Fill in the Description}}
+This cmdlet set or changes the name of an SSH key.
 
 ## EXAMPLES
 
 ### Example 1
 
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Set-HetznerCloudSshKey -Id 8414 -Name 'default'
 ```
 
-{{ Add example description here }}
+Sets the name of the specified SSH key
 
 ## PARAMETERS
 
 ### -Id
 
-{{Fill Id Description}}
+ID of the SSH key to set the name for
 
 ```yaml
 Type: Int32
@@ -51,7 +51,7 @@ Accept wildcard characters: False
 
 ### -Name
 
-{{Fill Name Description}}
+Name to set for the specified SSH key
 
 ```yaml
 Type: String
