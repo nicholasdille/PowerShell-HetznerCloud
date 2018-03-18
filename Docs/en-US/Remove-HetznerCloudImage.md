@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-{{Fill in the Synopsis}}
+Removes an server image from the Hetzner Cloud
 
 ## SYNTAX
 
@@ -19,23 +19,23 @@ Remove-HetznerCloudImage [-Id] <Int32[]> [<CommonParameters>]
 
 ## DESCRIPTION
 
-{{Fill in the Description}}
+This cmdlet removes an image that was previously created from a server.
 
 ## EXAMPLES
 
 ### Example 1
 
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Remove-HetznerCloudImage -Id 55520
 ```
 
-{{ Add example description here }}
+Removes the specified image
 
 ## PARAMETERS
 
 ### -Id
 
-{{Fill Id Description}}
+ID of the image to be removed
 
 ```yaml
 Type: Int32[]

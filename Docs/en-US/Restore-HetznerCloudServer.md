@@ -9,7 +9,7 @@ schema: 2.0.0
 
 ## SYNOPSIS
 
-{{Fill in the Synopsis}}
+Restore a server from an image in the Hetzner Cloud
 
 ## SYNTAX
 
@@ -19,23 +19,27 @@ Restore-HetznerCloudServer [-Id] <Int32> [-Image] <Int32> [<CommonParameters>]
 
 ## DESCRIPTION
 
-{{Fill in the Description}}
+This cmdlet restores a server from an image. The image can be a snapshot or backup previously created from a server or it can be a system image provided by Hetzner.
 
 ## EXAMPLES
 
 ### Example 1
 
 ```powershell
-PS C:\> {{ Add example code here }}
+PS C:\> Restore-HetznerCloudServer -Id 571630 -Image 1
+
+action                                                                                                                                      root_password
+------                                                                                                                                      -------------
+@{id=456575; command=rebuild_server; status=running; progress=0; started=18.03.2018 12:40:42; finished=; resources=System.Object[]; error=}
 ```
 
-{{ Add example description here }}
+Restores a server
 
 ## PARAMETERS
 
 ### -Id
 
-{{Fill Id Description}}
+ID of the server to be restored
 
 ```yaml
 Type: Int32
@@ -51,7 +55,7 @@ Accept wildcard characters: False
 
 ### -Image
 
-{{Fill Image Description}}
+ID of the image to use for restoring the server
 
 ```yaml
 Type: Int32
