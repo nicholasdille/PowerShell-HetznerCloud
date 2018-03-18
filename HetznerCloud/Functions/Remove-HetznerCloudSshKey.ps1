@@ -1,12 +1,24 @@
 function Remove-HetznerCloudSshKey {
-    [CmdletBinding(SupportsShouldProcess, ConfirmImpact='High')]
+    [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess, ConfirmImpact='High')]
     param(
-        [Parameter(Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+        [Parameter(ParameterSetName='ById', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
         [int[]]
         $Id
     )
-    
+
+    DynamicParam {
+        @(
+            @{
+                Name = 'Name'
+                Type = [string]
+                ParameterSetName = 'ByName'
+                Mandatory = $true
+                ValidateSet = Get-HetznerCloudSshKey | Select-Object -ExpandProperty Name
+            }
+        ) | ForEach-Object { New-Object PSObject -Property $_ } | New-DynamicParameter
+    }
+
     begin {
         if (-not $PSBoundParameters.ContainsKey('Confirm')) {
             $ConfirmPreference = $PSCmdlet.SessionState.PSVariable.GetValue('ConfirmPreference')
@@ -17,9 +29,16 @@ function Remove-HetznerCloudSshKey {
     }
 
     process {
+        New-DynamicParameter -CreateVariables -BoundParameters $PSBoundParameters
+
+        if ($PSCmdlet.ParameterSetName -ieq 'ByName') {
+            $Id = Get-HetznerCloudSshKey | Where-Object { $_.Name -ieq $Name } | Select-Object -ExpandProperty Id
+        }
+
         $Id | ForEach-Object {
-            Write-Verbose "Removing SSH public key with ID <$_>"
-            if ($Force -or $PSCmdlet.ShouldProcess("Remove SSH public key with ID <$Id>?")) {
+            $Name = Get-HetznerCloudSshKey -Id $_ | Select-Object -ExpandProperty Name
+            Write-Verbose "Removing SSH public key <$Name>"
+            if ($Force -or $PSCmdlet.ShouldProcess("Remove SSH public key <$Name>?")) {
                 Invoke-HetznerCloudApi -Api 'ssh_keys' -Method 'Delete' -Id $_
             }
         }

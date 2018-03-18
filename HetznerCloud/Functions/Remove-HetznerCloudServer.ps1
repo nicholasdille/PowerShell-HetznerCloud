@@ -1,12 +1,24 @@
 function Remove-HetznerCloudServer {
-    [CmdletBinding(SupportsShouldProcess, ConfirmImpact='High')]
+    [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess, ConfirmImpact='High')]
     param(
-        [Parameter(Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
+        [Parameter(ParameterSetName='ById', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
         [int[]]
         $Id
     )
-    
+
+    DynamicParam {
+        @(
+            @{
+                Name = 'Name'
+                Type = [string]
+                ParameterSetName = 'ByName'
+                Mandatory = $true
+                ValidateSet = Get-HetznerCloudServer | Select-Object -ExpandProperty Name
+            }
+        ) | ForEach-Object { New-Object PSObject -Property $_ } | New-DynamicParameter
+    }
+
     begin {
         if (-not $PSBoundParameters.ContainsKey('Confirm')) {
             $ConfirmPreference = $PSCmdlet.SessionState.PSVariable.GetValue('ConfirmPreference')
@@ -17,9 +29,16 @@ function Remove-HetznerCloudServer {
     }
 
     process {
+        New-DynamicParameter -CreateVariables -BoundParameters $PSBoundParameters
+
+        if ($PSCmdlet.ParameterSetName -ieq 'ByName') {
+            $Id = Get-HetznerCloudServer | Where-Object { $_.Name -ieq $Name } | Select-Object -ExpandProperty Id
+        }
+
         $Id | ForEach-Object {
-            Write-Verbose "Removing server with ID <$_>"
-            if ($Force -or $PSCmdlet.ShouldProcess("Remove server with ID <$Id>?")) {
+            $Name = Get-HetznerCloudServer -Id $_ | Select-Object -ExpandProperty Name
+            Write-Verbose "Removing server <$Name>"
+            if ($Force -or $PSCmdlet.ShouldProcess("Remove server <$Name>?")) {
                 Invoke-HetznerCloudApi -Api 'servers' -Id $_ -Method 'Delete'
             }
         }
