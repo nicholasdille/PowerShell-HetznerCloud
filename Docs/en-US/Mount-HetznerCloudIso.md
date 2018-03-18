@@ -19,7 +19,7 @@ Mount-HetznerCloudIso [-Server] <Int32> [-Iso] <Int32> [-WhatIf] [-Confirm] [<Co
 
 ## DESCRIPTION
 
-{{Fill in the Description}}
+This cmdlet mounts an ISO provided by the Hetzner Cloud. Custom ISOs are not supported.
 
 ## EXAMPLES
 
