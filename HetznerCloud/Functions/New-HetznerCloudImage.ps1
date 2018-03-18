@@ -1,11 +1,6 @@
 function New-HetznerCloudImage {
     [CmdletBinding(SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [int]
-        $Id
-        ,
         [Parameter()]
         [ValidateSet('Snapshot', 'Backup')]
         [string]
@@ -16,7 +11,18 @@ function New-HetznerCloudImage {
         [string]
         $Description
     )
-    
+
+    DynamicParam {
+        @(
+            @{
+                Name = 'Server'
+                Type = [string]
+                Mandatory = $true
+                ValidateSet = Get-HetznerCloudServer | Select-Object -ExpandProperty Name
+            }
+        ) | ForEach-Object { New-Object PSObject -Property $_ } | New-DynamicParameter
+    }
+
     begin {
         if (-not $PSBoundParameters.ContainsKey('Confirm')) {
             $ConfirmPreference = $PSCmdlet.SessionState.PSVariable.GetValue('ConfirmPreference')
@@ -24,6 +30,8 @@ function New-HetznerCloudImage {
         if (-not $PSBoundParameters.ContainsKey('WhatIf')) {
             $WhatIfPreference = $PSCmdlet.SessionState.PSVariable.GetValue('WhatIfPreference')
         }
+
+        New-DynamicParameter -CreateVariables -BoundParameters $PSBoundParameters
     }
 
     process {
@@ -34,7 +42,8 @@ function New-HetznerCloudImage {
             $Payload.Add('description', $Description)
         }
 
-        if ($Force -or $PSCmdlet.ShouldProcess("Create a new image from server with ID '$Id'?")) {
+        if ($Force -or $PSCmdlet.ShouldProcess("Create a new image from server '$Server'?")) {
+            $Id = Get-HetznerCloudServer | Where-Object { $_.Name -ieq $Server } | Select-Object -ExpandProperty Id
             Invoke-HetznerCloudApi -Api 'servers' -Id $Id -Action 'create_image' -Method 'Post' -Payload $Payload
         }
     }

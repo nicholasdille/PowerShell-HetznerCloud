@@ -6,35 +6,52 @@ function New-HetznerCloudServer {
         [string]
         $Name
         ,
-        [Parameter(Mandatory)]
-        [ValidateSet('cx11', 'cx11-ceph', 'cx21', 'cx21-ceph', 'cx31', 'cx31-ceph', 'cx41', 'cx41-ceph', 'cx51', 'cx51-ceph')]
-        [string]
-        $Type
-        ,
-        [Parameter(Mandatory)]
-        [ValidateSet('ubuntu-16.04', 'debian-9', 'centos-7', 'fedora-27')]
-        [string]
-        $Image
-        ,
-        [Parameter(Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [string[]]
-        $SshKey
-        ,
-        [Parameter(ParameterSetName='ByDatacenter')]
-        [ValidateSet('fsn1-dc8', 'nbg1-dc3')]
-        [string]
-        $Datacenter
-        ,
-        [Parameter(ParameterSetName='ByLocation')]
-        [ValidateSet('fsn1', 'nbg1')]
-        [string]
-        $Location
-        ,
         [Parameter()]
         [switch]
         $NoStartAfterCreate
     )
+
+    DynamicParam {
+        @(
+            @{
+                Name = 'Type'
+                Type = [string]
+                Mandatory = $true
+                ValidateSet = $script:HetznerCloudServerType | Select-Object -ExpandProperty Name
+            }
+
+            @{
+                Name = 'Image'
+                Type = [string]
+                Mandatory = $true
+                ValidateSet = $script:HetznerCloudImage | Select-Object -ExpandProperty Name
+            }
+
+            @{
+                Name = 'SshKey'
+                Type = [string]
+                Mandatory = $true
+                ValidateSet = $script:HetznerCloudSshKey | Select-Object -ExpandProperty Name
+            }
+
+            @{
+                Name = 'Datacenter'
+                Type = [string]
+                ParameterSetName = 'ByDatacenter'
+                Mandatory = $true
+                ValidateSet = $script:HetznerCloudDatacenter | Select-Object -ExpandProperty Name
+            }
+
+            @{
+                Name = 'Location'
+                Type = [string]
+                ParameterSetName = 'ByLocation'
+                Mandatory = $true
+                ValidateSet = $script:HetznerCloudLocation | Select-Object -ExpandProperty Name
+            }
+
+        ) | ForEach-Object { New-Object PSObject -Property $_ } | New-DynamicParameter
+    }
 
     begin {
         if (-not $PSBoundParameters.ContainsKey('Confirm')) {
@@ -43,6 +60,8 @@ function New-HetznerCloudServer {
         if (-not $PSBoundParameters.ContainsKey('WhatIf')) {
             $WhatIfPreference = $PSCmdlet.SessionState.PSVariable.GetValue('WhatIfPreference')
         }
+
+        New-DynamicParameter -CreateVariables -BoundParameters $PSBoundParameters
     }
 
     process {

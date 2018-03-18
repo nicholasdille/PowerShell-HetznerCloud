@@ -10,19 +10,37 @@ function New-HetznerCloudFloatingIp {
         [ValidateNotNullOrEmpty()]
         [string]
         $Description
-        ,
-        [Parameter(ParameterSetName='ByServer', Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [string]
-        $Server
-        ,
-        [Parameter(ParameterSetName='ByServer')]
-        [Parameter(ParameterSetName='ByLocation', Mandatory)]
-        [ValidateSet('fsn1', 'nbg1')]
-        [string]
-        $Location
     )
-    
+
+    DynamicParam {
+        @(
+            @{
+                Name = 'Server'
+                Type = [string]
+                ParameterSetName = 'ByServer'
+                Mandatory = $true
+                ValidateSet = Get-HetznerCloudServer | Select-Object -ExpandProperty Name
+            }
+
+            @{
+                Name = 'Location'
+                Type = [string]
+                ParameterSetName = 'ByLocation'
+                Mandatory = $true
+                ValidateSet = $script:HetznerCloudLocation | Select-Object -ExpandProperty Name
+            }
+
+            @{
+                Name = 'Location'
+                Type = [string]
+                ParameterSetName = 'ByServer'
+                Mandatory = $false
+                ValidateSet = $script:HetznerCloudLocation | Select-Object -ExpandProperty Name
+            }
+
+        ) | ForEach-Object { New-Object PSObject -Property $_ } | New-DynamicParameter
+    }
+
     begin {
         if (-not $PSBoundParameters.ContainsKey('Confirm')) {
             $ConfirmPreference = $PSCmdlet.SessionState.PSVariable.GetValue('ConfirmPreference')
@@ -30,6 +48,8 @@ function New-HetznerCloudFloatingIp {
         if (-not $PSBoundParameters.ContainsKey('WhatIf')) {
             $WhatIfPreference = $PSCmdlet.SessionState.PSVariable.GetValue('WhatIfPreference')
         }
+
+        New-DynamicParameter -CreateVariables -BoundParameters $PSBoundParameters
     }
 
     process {
@@ -37,7 +57,8 @@ function New-HetznerCloudFloatingIp {
             type = $Type.ToLower()
         }
         if ($PSBoundParameters.ContainsKey('Server')) {
-            $Payload.Add('server', $Server)
+            $ServerId = Get-HetznerCloudServer -Name $Server | Select-Object -ExpandProperty Id
+            $Payload.Add('server', $ServerId)
         }
         if ($PSBoundParameters.ContainsKey('Location')) {
             $Payload.Add('home_location', $Location)

@@ -11,7 +11,7 @@ function Restore-HetznerCloudServer {
         [int]
         $Image
     )
-    
+
     begin {
         if (-not $PSBoundParameters.ContainsKey('Confirm')) {
             $ConfirmPreference = $PSCmdlet.SessionState.PSVariable.GetValue('ConfirmPreference')

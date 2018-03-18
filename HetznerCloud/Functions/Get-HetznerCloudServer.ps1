@@ -16,6 +16,7 @@ function Get-HetznerCloudServer {
         Get-HetznerCloudServer | Where-Object { $_.Name -ieq $Name }
 
     } else {
+        $FloatingIps = Get-HetznerCloudFloatingIp
         Invoke-HetznerCloudApi -Api 'servers' @PSBoundParameters | ForEach-Object {
             [pscustomobject]@{
                 Id = $_.id
@@ -28,6 +29,11 @@ function Get-HetznerCloudServer {
                 Image = $_.image.name
                 IPAddress = $_.public_net.ipv4.ip
                 DnsPtr = $_.public_net.ipv4.dns_ptr
+                FloatingIp = foreach ($FloatingIpId in $_.public_net.floating_ips) {
+                    $FloatingIps |
+                        Where-Object { $_.Id -eq $FloatingIpId } |
+                        Select-Object -ExpandProperty IPAddress
+                }
                 Iso = ''
                 Backup = $_.backup_window
                 RescueSystem = $_.rescue_enabled
