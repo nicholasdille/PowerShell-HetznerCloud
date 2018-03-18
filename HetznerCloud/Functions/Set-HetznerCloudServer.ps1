@@ -30,7 +30,7 @@ function Set-HetznerCloudServer {
         [string]
         $Hostname = $null
     )
-    
+
     begin {
         if (-not $PSBoundParameters.ContainsKey('Confirm')) {
             $ConfirmPreference = $PSCmdlet.SessionState.PSVariable.GetValue('ConfirmPreference')
@@ -56,10 +56,11 @@ function Set-HetznerCloudServer {
 
                 $Payload = @{
                     server_type = $Type.ToLower()
+                    upgrade_disk = -not $AllowDowngrade
                 }
-                if ($AllowDowngrade) {
-                    $Payload.Add('upgrade_disk', -not $AllowDowngrade)
-                }
+                #if ($AllowDowngrade) {
+                #    $Payload.Add('upgrade_disk', -not $AllowDowngrade)
+                #}
                 Invoke-HetznerCloudApi -Api 'servers' -Method 'Post' -Id $Id -Action 'change_type' -Payload $Payload
             }
 
