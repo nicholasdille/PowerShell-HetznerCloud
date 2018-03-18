@@ -19,22 +19,11 @@ The second header should have no spaces.
 
 # SHORT DESCRIPTION
 
-{{ Short Description Placeholder }}
-
-```
-ABOUT TOPIC NOTE:
-About topics can be no longer than 80 characters wide when rendered to text.
-Any topics greater than 80 characters will be automatically wrapped.
-The generated about topic will be encoded UTF-8.
-```
+This module supports the entire API of the Hetzner Cloud
 
 # LONG DESCRIPTION
 
 {{ Long Description Placeholder }}
-
-## Optional Subtopics
-
-{{ Optional Subtopic Placeholder }}
 
 # EXAMPLES
 
