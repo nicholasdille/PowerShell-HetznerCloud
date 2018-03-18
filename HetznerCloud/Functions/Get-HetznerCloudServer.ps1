@@ -26,6 +26,8 @@ function Get-HetznerCloudServer {
                 Datacenter = $_.datacenter.name
                 Location = $_.datacenter.location.name
                 Image = $_.image.name
+                IPAddress = $_.public_net.ipv4.ip
+                DnsPtr = $_.public_net.ipv4.dns_ptr
                 Iso = ''
                 Backup = $_.backup_window
                 RescueSystem = $_.rescue_enabled
