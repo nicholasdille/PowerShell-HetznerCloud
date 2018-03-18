@@ -42,6 +42,9 @@ function Invoke-HetznerCloudApi {
         [ValidateNotNullOrEmpty()]
         [int]
         $PageSize = 25
+        ,
+        [switch]
+        $PrintRaw
     )
 
     $ApiData = Get-HetznerCloud
@@ -74,7 +77,7 @@ function Invoke-HetznerCloudApi {
         } elseif ($PSBoundParameters.ContainsKey('CustomAction')) {
             $BaseUri += "/$CustomAction"
         }
-    
+
     } else {
         $BaseUri += "?per_page=$PageSize"
     }
@@ -88,7 +91,7 @@ function Invoke-HetznerCloudApi {
             $Response = Invoke-RestMethod -Uri $NextPageUri @Params
             if (Get-Member -InputObject $Response -MemberType Properties -Name $Api) {
                 $Result += $Response | Select-Object -ExpandProperty $Api
-            
+
             } elseif (Get-Member -InputObject $Response -MemberType Properties -Name $Api.TrimEnd('s')) {
                 $Result += $Response | Select-Object -ExpandProperty $Api.TrimEnd('s')
 
@@ -108,6 +111,10 @@ function Invoke-HetznerCloudApi {
         $Json = $_.ErrorDetails.Message | ConvertFrom-Json -ErrorAction SilentlyContinue
         $Message = $Json.error.Message
         Write-Error "Received $Code ($Reason): $Message"
+    }
+
+    if ($PrintRaw) {
+        $Result | ConvertTo-Json | Write-Host
     }
 
     $Result
