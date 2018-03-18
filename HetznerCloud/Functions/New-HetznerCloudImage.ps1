@@ -30,11 +30,11 @@ function New-HetznerCloudImage {
         if (-not $PSBoundParameters.ContainsKey('WhatIf')) {
             $WhatIfPreference = $PSCmdlet.SessionState.PSVariable.GetValue('WhatIfPreference')
         }
-
-        New-DynamicParameter -CreateVariables -BoundParameters $PSBoundParameters
     }
 
     process {
+        New-DynamicParameter -CreateVariables -BoundParameters $PSBoundParameters
+
         $Payload = @{
             type = $Type.ToLower()
         }

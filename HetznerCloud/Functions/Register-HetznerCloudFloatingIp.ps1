@@ -28,11 +28,11 @@ function Register-HetznerCloudFloatingIp {
         if (-not $PSBoundParameters.ContainsKey('WhatIf')) {
             $WhatIfPreference = $PSCmdlet.SessionState.PSVariable.GetValue('WhatIfPreference')
         }
-
-        New-DynamicParameter -CreateVariables -BoundParameters $PSBoundParameters
     }
 
     process {
+        New-DynamicParameter -CreateVariables -BoundParameters $PSBoundParameters
+
         if ($Force -or $PSCmdlet.ShouldProcess("Assign floating IP <$FloatingIp> to server <$Server>?")) {
             $Id = Get-HetznerCloudFloatingIp | Where-Object { $_.IPAddress -eq $FloatingIp } | Select-Object -ExpandProperty Id
             $ServerId = Get-HetznerCloudServer -Name $Server | Select-Object -ExpandProperty Id

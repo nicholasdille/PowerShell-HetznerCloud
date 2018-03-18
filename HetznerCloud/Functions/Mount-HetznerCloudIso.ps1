@@ -1,22 +1,31 @@
 function Mount-HetznerCloudIso {
-    [CmdletBinding(DefaultParameterSetName='ById', SupportsShouldProcess, ConfirmImpact='Low')]
+    [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess, ConfirmImpact='Low')]
     param(
-        [Parameter(ParameterSetName='ByName')]
-        [ValidateNotNullOrEmpty()]
-        [string]
-        $ServerName
-        ,
-        [Parameter(ParameterSetName='ById', Mandatory)]
+        [Parameter(ParameterSetName='ById', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
         [int]
-        $ServerId
-        ,
-        [Parameter(ParameterSetName='ByName', Mandatory)]
-        [Parameter(ParameterSetName='ById', Mandatory)]
-        [ValidateNotNullOrEmpty()]
-        [int]
-        $Iso
+        $Id
     )
+
+    DynamicParam {
+        @(
+            @{
+                Name = 'Name'
+                Type = [string]
+                ParameterSetName = 'ByName'
+                Mandatory = $true
+                ValidateSet = Get-HetznerCloudServer | Select-Object -ExpandProperty Name
+            }
+
+            @{
+                Name = 'Iso'
+                Type = [string]
+                Mandatory = $true
+                ValidateSet = $script:HetznerCloudIso | Select-Object -ExpandProperty Name
+            }
+
+        ) | ForEach-Object { New-Object PSObject -Property $_ } | New-DynamicParameter
+    }
 
     begin {
         if (-not $PSBoundParameters.ContainsKey('Confirm')) {
@@ -28,13 +37,16 @@ function Mount-HetznerCloudIso {
     }
 
     process {
+        New-DynamicParameter -CreateVariables -BoundParameters $PSBoundParameters
+
         if ($PSCmdlet.ParameterSetName -ieq 'ByName') {
-            $ServerId = Get-HetznerCloudServer -Name $ServerName | Select-Object -ExpandProperty Id
+            $Id = Get-HetznerCloudServer -Name $Name | Select-Object -ExpandProperty Id
         }
 
-        if ($Force -or $PSCmdlet.ShouldProcess("Mount ISO with ID <$Iso> on server with ID <$ServerId>?")) {
-            Invoke-HetznerCloudApi -Api 'servers' -Method 'Post' -Id $ServerId -Action 'attach_iso' -Payload @{
-                iso = $Iso
+        if ($Force -or $PSCmdlet.ShouldProcess("Mount ISO <$Iso> on server <$Name>?")) {
+            $IsoId = Get-HetznerCloudIso | Where-Object { $_.Name -ieq $Iso }
+            Invoke-HetznerCloudApi -Api 'servers' -Method 'Post' -Id $Id -Action 'attach_iso' -Payload @{
+                iso = $IsoId
             }
         }
     }

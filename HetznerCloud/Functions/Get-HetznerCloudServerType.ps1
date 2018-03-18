@@ -12,8 +12,6 @@ function Get-HetznerCloudServerType {
         $Id
     )
 
-
-
     if ($PSCmdlet.ParameterSetName -ieq 'ByName') {
         Get-HetznerCloudServerType | Where-Object { $_.Name -ieq $Name }
 

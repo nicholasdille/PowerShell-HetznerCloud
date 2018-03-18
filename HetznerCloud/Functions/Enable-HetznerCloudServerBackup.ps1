@@ -1,11 +1,6 @@
 function Enable-HetznerCloudServerBackup {
     [CmdletBinding(DefaultParameterSetName='ById', SupportsShouldProcess, ConfirmImpact='Low')]
     param(
-        [Parameter(ParameterSetName='ByName')]
-        [ValidateNotNullOrEmpty()]
-        [string]
-        $Name
-        ,
         [Parameter(ParameterSetName='ById', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
         [int[]]
@@ -18,6 +13,18 @@ function Enable-HetznerCloudServerBackup {
         $Timeslot
     )
 
+    DynamicParam {
+        @(
+            @{
+                Name = 'Name'
+                Type = [string]
+                ParameterSetName = 'ByName'
+                Mandatory = $true
+                ValidateSet = Get-HetznerCloudServer | Select-Object -ExpandProperty Name
+            }
+        ) | ForEach-Object { New-Object PSObject -Property $_ } | New-DynamicParameter
+    }
+
     begin {
         if (-not $PSBoundParameters.ContainsKey('Confirm')) {
             $ConfirmPreference = $PSCmdlet.SessionState.PSVariable.GetValue('ConfirmPreference')
@@ -28,13 +35,16 @@ function Enable-HetznerCloudServerBackup {
     }
 
     process {
+        New-DynamicParameter -CreateVariables -BoundParameters $PSBoundParameters
+
         if ($PSCmdlet.ParameterSetName -ieq 'ByName') {
             $Id = Get-HetznerCloudServer -Name $Name | Select-Object -ExpandProperty Id
         }
 
         $Id | ForEach-Object {
-            Write-Verbose "Disable backup for server with ID <$_>"
-            if ($Force -or $PSCmdlet.ShouldProcess("Enable backup for server with ID <$_>?")) {
+            $ServerName = Get-HetznerCloudServer -Id $_ | Select-Object -ExpandProperty Name
+            Write-Verbose "Disable backup for server <$ServerName>"
+            if ($Force -or $PSCmdlet.ShouldProcess("Enable backup for server <$ServerName>?")) {
                 $Payload = @{
                     'backup_window' = $Timeslot
                 }

@@ -1,16 +1,23 @@
 function Dismount-HetznerCloudIso {
-    [CmdletBinding(DefaultParameterSetName='ById', SupportsShouldProcess, ConfirmImpact='Medium')]
+    [CmdletBinding(DefaultParameterSetName='ByName', SupportsShouldProcess, ConfirmImpact='Medium')]
     param(
-        [Parameter(ParameterSetName='ByName')]
-        [ValidateNotNullOrEmpty()]
-        [string]
-        $Name
-        ,
-        [Parameter(ParameterSetName='ById', Mandatory)]
+        [Parameter(ParameterSetName='ById', Mandatory, ValueFromPipeline, ValueFromPipelineByPropertyName)]
         [ValidateNotNullOrEmpty()]
         [int]
         $Id
     )
+
+    DynamicParam {
+        @(
+            @{
+                Name = 'Name'
+                Type = [string]
+                ParameterSetName = 'ByName'
+                Mandatory = $true
+                ValidateSet = Get-HetznerCloudServer | Select-Object -ExpandProperty Name
+            }
+        ) | ForEach-Object { New-Object PSObject -Property $_ } | New-DynamicParameter
+    }
 
     begin {
         if (-not $PSBoundParameters.ContainsKey('Confirm')) {
@@ -22,11 +29,16 @@ function Dismount-HetznerCloudIso {
     }
 
     process {
+        New-DynamicParameter -CreateVariables -BoundParameters $PSBoundParameters
+
         if ($PSCmdlet.ParameterSetName -ieq 'ByName') {
             $Id = Get-HetznerCloudServer -Name $Name | Select-Object -ExpandProperty Id
+
+        } elseif ($PSCmdlet.ParameterSetName -ieq 'ById') {
+            $Name = Get-HetznerCloudServer -Name $Id | Select-Object -ExpandProperty Name
         }
 
-        if ($Force -or $PSCmdlet.ShouldProcess("Unmount ISO from server with ID <$Id>?")) {
+        if ($Force -or $PSCmdlet.ShouldProcess("Unmount ISO from server <$Name>?")) {
             Invoke-HetznerCloudApi -Api 'servers' -Method 'Post' -Id $Id -Action 'detach_iso'
         }
     }
