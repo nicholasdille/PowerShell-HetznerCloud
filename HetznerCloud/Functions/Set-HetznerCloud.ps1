@@ -5,7 +5,7 @@ function Set-HetznerCloud {
         Justification = "At some point the conversion must take place"
     )]
     [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
-        "PSUseShouldProcessForStateChangingFunctions", 
+        "PSUseShouldProcessForStateChangingFunctions",
         '',
         Justification = "Only stores the token in the module context"
     )]
@@ -18,4 +18,6 @@ function Set-HetznerCloud {
     )
 
     $HetznerCloud.Token = ConvertTo-SecureString -String $Token -AsPlainText -Force
+
+    Import-HetznerCloud
 }
