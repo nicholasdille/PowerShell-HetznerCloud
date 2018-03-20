@@ -415,6 +415,11 @@
 	}
 #>
 Function New-DynamicParameter {
+    [Diagnostics.CodeAnalysis.SuppressMessageAttribute(
+        'PSUseShouldProcessForStateChangingFunctions',
+        '',
+        Justification = 'Does not change state of system'
+    )]
 	[CmdletBinding(PositionalBinding = $false, DefaultParameterSetName = 'DynamicParameter')]
 	Param
 	(
