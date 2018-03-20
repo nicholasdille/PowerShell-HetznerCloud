@@ -114,7 +114,7 @@ function Invoke-HetznerCloudApi {
     }
 
     if ($PrintRaw) {
-        $Result | ConvertTo-Json | Write-Host
+        $Result | ConvertTo-Json | Write-Information
     }
 
     $Result
