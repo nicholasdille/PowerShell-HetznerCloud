@@ -11,13 +11,13 @@ function Set-HetznerCloud {
     )]
     [CmdletBinding()]
     param(
-        [Parameter(Mandatory)]
+        [Parameter()]
         [ValidateNotNullOrEmpty()]
-        [string]
-        $Token
+        [SecureString]
+        $Token = (Read-Host -Prompt 'Please enter token' -AsSecureString)
     )
 
-    $HetznerCloud.Token = ConvertTo-SecureString -String $Token -AsPlainText -Force
+    $HetznerCloud.Token = $Token
 
     Import-HetznerCloud
 }
