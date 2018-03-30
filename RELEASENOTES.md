@@ -1,5 +1,10 @@
 # Release Notes
 
+## 0.9.0.45
+
+- Added documentation
+- Using `Read-Host` in default token parameter value for `Set-HetznerCloud`
+
 ## 0.8.15.30
 
 - Migrated to new format of release notes
